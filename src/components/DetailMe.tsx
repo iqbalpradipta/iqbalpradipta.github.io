@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Who from "./Detail/Who";
 import Project from "./Detail/Project";
 import Scrollbar from "./Custom/Scroll";
