@@ -10,7 +10,7 @@ function Project() {
         <Typography sx={{ fontSize: "30px", fontWeight: "bold" }}>
           Project
         </Typography>
-        {/* <ProjectCard /> */}
+        <ProjectCard />
       </Box>
     </>
   );

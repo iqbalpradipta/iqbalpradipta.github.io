@@ -1,32 +1,35 @@
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Box, Button, Typography } from "@mui/material";
+import CardMedia from "@mui/material/CardMedia";
 
 export default function ProjectCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Box sx={{ maxWidth: 650, mt: "10px" }}>
       <CardMedia
         component="img"
-        alt="green iguana"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        alt="Project 1"
+        style={{ maxHeight: "60vh", objectFit: "cover" }}
+        image="./src/assets/CircleApps.png"
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+      <Typography variant="h6">Circle Apps</Typography>
+      <Typography variant="body2">
+        Building Social media experiences with feature Login, Register, Posts,
+        Replies, Follows, and Likes. Developed using Typescript, React.js, and
+        PostgreSQL
+      </Typography>
+      <Button
+        variant="contained"
+        sx={{
+          mt: "9px",
+          backgroundColor: "#634136",
+          "&:hover": {
+            backgroundColor: "#eca898",
+            color: "white",
+          },
+          color: "white"
+        }}
+      >
+        Source Code
+      </Button>
+    </Box>
   );
 }

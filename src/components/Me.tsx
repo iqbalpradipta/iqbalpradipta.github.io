@@ -9,7 +9,7 @@ export default function Me() {
     <>
       <Box
         sx={{
-          height: { xs: "50vh", sm: "40vh", md: "80vh" },
+          height: { xs: "90vh", sm: "40vh", md: "80vh" },
           width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "20vw", xl: "10vw" },
           my: 3,
           display: "flex",
@@ -38,7 +38,7 @@ export default function Me() {
               <CardMedia
                 sx={{
                   height: { xs: "20vh", md: "20vh" },
-                  width: { xs: "40vw", md: "10vw" },
+                  width: { xs: "30vw", md: "10vw" },
                   border: "1px solid black",
                   borderRadius: "100%",
                   display: "flex",

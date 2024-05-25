@@ -1,14 +1,16 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
 import Who from "./Detail/Who";
 import Project from "./Detail/Project";
+import Scrollbar from "./Custom/Scroll";
 
 function DetailMe() {
+  const styles = Scrollbar();
+
   return (
     <>
       <Box
         sx={{
-          height: { xs: "50vh", sm: "40vh", md: "80vh" },
+          height: { xs: "100vh", sm: "40vh", md: "80vh" },
           width: {
             xs: "130vw",
             sm: "100vw",
@@ -25,6 +27,7 @@ function DetailMe() {
           backgroundColor: "#6b5449",
           opacity: "91%",
           mx: 3,
+          ...styles.scrollBox,
         }}
       >
         <Who />
