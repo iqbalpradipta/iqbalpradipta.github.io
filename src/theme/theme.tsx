@@ -8,14 +8,14 @@ const Theme = createTheme({
     text: {
       primary: "#F8F6E3",
       secondary: "#7f5af0", 
-      disabled: "#757575", // Warna teks yang dinonaktifkan
+      disabled: "#757575",
     },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundImage: `url(./src/assets/Mienar.gif)`,
+          backgroundImage: `url(./public/assets/Mienar.gif)`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',

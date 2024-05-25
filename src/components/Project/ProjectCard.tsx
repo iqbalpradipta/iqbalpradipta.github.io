@@ -8,7 +8,7 @@ export default function ProjectCard() {
         component="img"
         alt="Project 1"
         style={{ maxHeight: "60vh", objectFit: "cover" }}
-        image="./src/assets/CircleApps.png"
+        image="./public/assets/CircleApps.png"
       />
       <Typography variant="h6">Circle Apps</Typography>
       <Typography variant="body2">

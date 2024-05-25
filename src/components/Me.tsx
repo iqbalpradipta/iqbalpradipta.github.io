@@ -49,7 +49,7 @@ export default function Me() {
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
-                image="./src/assets/pp.jpg"
+                image="./public/assets/pp.jpg"
                 title="Photo Iqbal Gantenk"
               />
               <Typography
