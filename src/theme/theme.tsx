@@ -11,20 +11,6 @@ const Theme = createTheme({
       disabled: '#757575',
     },
   },
-  typography: {
-    h1: {
-      fontSize: '2.5rem',
-      '@media (max-width:600px)': {
-        fontSize: '2rem', 
-      },
-    },
-    body1: {
-      fontSize: '1.2rem',
-      '@media (max-width:600px)': {
-        fontSize: '1rem',
-      },
-    },
-  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
