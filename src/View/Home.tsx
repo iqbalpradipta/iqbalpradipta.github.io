@@ -1,11 +1,13 @@
-import Me from "../components/Me"
+import { Grid } from "@mui/material";
+import Me from "../components/Me";
+import DetailMe from "../components/DetailMe";
 
 function Home() {
   return (
     <>
-      <Me />
+      <DetailMe />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

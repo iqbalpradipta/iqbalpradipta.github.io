@@ -1,19 +1,19 @@
 import { Button } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 
-function LinkedInButton() {
+function WhatsAppButton() {
   return (
     <>
       <Button
         variant="contained"
-        startIcon={<LinkedInIcon />}
-        href="https://linkedin.com/in/iqbalpradipta"
+        startIcon={<WhatsAppIcon />}
+        href="https://wa.me/6281385626786"
         target="_blank"
         sx={{
-          backgroundColor: '#151aa0',
+          backgroundColor: 'green',
           '&:hover': {
-            backgroundColor: '#0b0ec9',
+            backgroundColor: '#68db5e',
             color: 'white',
           },
           width: '100%',
@@ -23,10 +23,10 @@ function LinkedInButton() {
           justifyContent: 'center',
         }}
       >
-        LinkedIn
+        WhatsApp
       </Button>
     </>
   );
 }
 
-export default LinkedInButton;
+export default WhatsAppButton;

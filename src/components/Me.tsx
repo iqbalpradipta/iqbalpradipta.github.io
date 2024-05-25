@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Box, CardMedia, Divider, Grid, Typography } from "@mui/material";
+import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import GithubButton from "./Button/githubButton";
 import LinkedInButton from "./Button/linkedInButton";
 import EmailButton from "./Button/emailButton";
+import WhatsAppButton from "./Button/whatsAppButton";
 
 export default function Me() {
   return (
@@ -16,11 +16,12 @@ export default function Me() {
           alignItems: "center",
           gap: 4,
           p: 2,
-          border: "1px solid black",
+          border: "1px solid #886150",
           borderRadius: "10px",
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
-          opacity: "100%",
+          opacity: "91%",
+          mx: 5
         }}
       >
         <Grid
@@ -32,7 +33,7 @@ export default function Me() {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ position: "relative", bottom: "20px" }}>
+          <Box sx={{ position: "relative", bottom: "-30px" }}>
             <Grid item>
               <CardMedia
                 sx={{
@@ -69,11 +70,12 @@ export default function Me() {
                 Back-end Developer
               </Typography>
             </Grid>
-
             <Grid item mt="20px">
+              <Box sx={{fontWeight: 'bold'}}>Let's Connect With Me !</Box>
               <GithubButton />
               <LinkedInButton />
               <EmailButton />
+              <WhatsAppButton />
             </Grid>
           </Box>
         </Grid>

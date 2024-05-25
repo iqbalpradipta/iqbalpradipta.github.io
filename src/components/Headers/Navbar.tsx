@@ -1,4 +1,4 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import Modal from "./Modal";
 
 function Navbar() {

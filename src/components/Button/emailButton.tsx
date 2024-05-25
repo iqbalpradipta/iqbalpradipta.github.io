@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import EmailIcon from '@mui/icons-material/Email';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 
 function EmailButton() {
@@ -7,13 +7,13 @@ function EmailButton() {
     <>
       <Button
         variant="contained"
-        startIcon={<EmailIcon style={{ color: "red", margin: '0' }} />}
-        href="https://github.com/iqbalpradipta"
+        startIcon={<MailOutlineIcon style={{ color: "white", margin: '0' }} />}
+        href="mailto:iqbalpradipta2@gmail.com"
         target="_blank"
         sx={{
-          backgroundColor: '#151aa0',
+          backgroundColor: 'red',
           '&:hover': {
-            backgroundColor: '#0b0ec9',
+            backgroundColor: '#db3333',
             color: 'white',
           },
           width: '100%',
@@ -23,7 +23,7 @@ function EmailButton() {
           justifyContent: 'center',
         }}
       >
-        LinkedIn
+        Email
       </Button>
     </>
   );

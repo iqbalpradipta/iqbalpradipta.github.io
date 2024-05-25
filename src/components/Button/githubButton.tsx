@@ -8,7 +8,7 @@ function GithubButton() {
     <>
       <Button
         variant="contained"
-        startIcon={<GitHubIcon style={{ color: "black" }} />}
+        startIcon={<GitHubIcon />}
         href="https://github.com/iqbalpradipta"
         target="_blank"
         sx={{
