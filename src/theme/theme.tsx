@@ -13,27 +13,15 @@ const Theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '2rem',
-      '@media (min-width:600px)': {
-        fontSize: '2.5rem',
-      },
-      '@media (min-width:960px)': {
-        fontSize: '3rem',
-      },
-      '@media (min-width:1280px)': {
-        fontSize: '3.5rem',
+      fontSize: '2.5rem',
+      '@media (max-width:600px)': {
+        fontSize: '2rem', 
       },
     },
     body1: {
-      fontSize: '1rem',
-      '@media (min-width:600px)': {
-        fontSize: '1.2rem',
-      },
-      '@media (min-width:960px)': {
-        fontSize: '1.5rem',
-      },
-      '@media (min-width:1280px)': {
-        fontSize: '1.8rem',
+      fontSize: '1.2rem',
+      '@media (max-width:600px)': {
+        fontSize: '1rem',
       },
     },
   },
@@ -44,29 +32,15 @@ const Theme = createTheme({
           backgroundImage: `url(/assets/Mienar.gif)`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center center',
           width: '100%',
           height: '100%',
           imageRendering: 'auto',
           margin: 0,
           padding: 0,
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
           '@media (max-width:600px)': {
-            height: '56px',
-          },
-          '@media (min-width:600px)': {
-            height: '64px',
-          },
-          '@media (min-width:960px)': {
-            height: '72px',
-          },
-          '@media (min-width:1280px)': {
-            height: '80px',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
           },
         },
       },
