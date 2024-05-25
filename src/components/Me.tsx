@@ -39,7 +39,8 @@ export default function Me() {
                 sx={{
                   height: { xs: "20vh", md: "20vh" },
                   width: { xs: "30vw", md: "10vw" },
-                  border: "1px solid black",
+                  boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
+                  border: "1px solid #ac7d65",
                   borderRadius: "100%",
                   display: "flex",
                   justifyContent: "center",
@@ -49,7 +50,7 @@ export default function Me() {
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
-                image="./public/assets/pp.jpg"
+                image="/assets/pp.jpg"
                 title="Photo Iqbal Gantenk"
               />
               <Typography

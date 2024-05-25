@@ -15,7 +15,7 @@ const Theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundImage: `url(./public/assets/Mienar.gif)`,
+          backgroundImage: `url(/assets/Mienar.gif)`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',

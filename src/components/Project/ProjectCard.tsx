@@ -8,7 +8,7 @@ export default function ProjectCard() {
         component="img"
         alt="Project 1"
         style={{ maxHeight: "60vh", objectFit: "cover" }}
-        image="./public/assets/CircleApps.png"
+        image="/assets/CircleApps.png"
       />
       <Typography variant="h6">Circle Apps</Typography>
       <Typography variant="body2">
@@ -18,6 +18,7 @@ export default function ProjectCard() {
       </Typography>
       <Button
         variant="contained"
+        href='https://github.com/iqbalpradipta/Thread-Apps'
         sx={{
           mt: "9px",
           backgroundColor: "#634136",
