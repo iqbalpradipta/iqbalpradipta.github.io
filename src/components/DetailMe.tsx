@@ -2,9 +2,27 @@ import { Box } from "@mui/material";
 import Who from "./Detail/Who";
 import Project from "./Detail/Project";
 import Scrollbar from "./Custom/Scroll";
+import { useRef, useEffect } from "react";
+import gsap from 'gsap'
 
 function DetailMe() {
   const styles = Scrollbar();
+
+  const boxRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    gsap.to(boxRef.current, { 
+        duration: 2, 
+        x: -25, 
+        opacity: "91%",
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: boxRef.current,  
+            start: "top 75%",            
+            end: "top 50%",               
+        }
+    });
+}, []);
 
   return (
     <>
@@ -25,10 +43,11 @@ function DetailMe() {
           borderRadius: "10px",
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
-          opacity: "91%",
-          mx: 3,
+          opacity: 0,
+          mx: 10,
           ...styles.scrollBox,
         }}
+        ref={boxRef}
       >
         <Who />
         <Project />

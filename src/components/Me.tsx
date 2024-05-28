@@ -3,8 +3,26 @@ import GithubButton from "./Button/githubButton";
 import LinkedInButton from "./Button/linkedInButton";
 import EmailButton from "./Button/emailButton";
 import WhatsAppButton from "./Button/whatsAppButton";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import DownloadCV from "./Button/downloadCV";
 
 export default function Me() {
+  const boxRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    gsap.to(boxRef.current, { 
+        duration: 2, 
+        x: 50, 
+        opacity: "91%",
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: boxRef.current,  
+            start: "top 75%",            
+            end: "top 50%",               
+        }
+    });
+}, []);
   return (
     <>
       <Box
@@ -20,9 +38,10 @@ export default function Me() {
           borderRadius: "10px",
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
-          opacity: "91%",
+          opacity: 0,
           mx: 5
         }}
+        ref={boxRef}
       >
         <Grid
           container
@@ -33,7 +52,7 @@ export default function Me() {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ position: "relative", bottom: "-30px" }}>
+          <Box sx={{ position: "relative", bottom: "-50px" }}>
             <Grid item>
               <CardMedia
                 sx={{
@@ -46,7 +65,7 @@ export default function Me() {
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  top: "-70px",
+                  top: "-60px",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
@@ -77,6 +96,7 @@ export default function Me() {
               <LinkedInButton />
               <EmailButton />
               <WhatsAppButton />
+              <DownloadCV />
             </Grid>
           </Box>
         </Grid>

@@ -89,9 +89,6 @@ export default function Modal() {
           <ListItemText primary="Light mode" />
           <Switch checked={darkMode} onChange={toggleDarkMode} />
         </MenuItem>
-        <MenuItem>
-          <ListItemText primary="العربية" />
-        </MenuItem>
       </Menu>
     </div>
   );
