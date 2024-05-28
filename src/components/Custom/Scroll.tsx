@@ -15,7 +15,7 @@ const Scrollbar = () => {
           borderRadius: '5px',
         },
         '&::-webkit-scrollbar-thumb:hover': {
-          backgroundColor: '#555',
+          backgroundColor: '#fcb5a5',
         },
       },
     };
