@@ -27,7 +27,7 @@ export default function Me() {
     <>
       <Box
         sx={{
-          height: { xs: "90vh", sm: "40vh", md: "80vh" },
+          height: { xs: "90vh", sm: "90vh", md: "80vh" },
           width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "20vw", xl: "10vw" },
           my: 3,
           display: "flex",
@@ -39,7 +39,7 @@ export default function Me() {
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
           opacity: 0,
-          mx: 5
+          mx: 6
         }}
         ref={boxRef}
       >
@@ -56,8 +56,8 @@ export default function Me() {
             <Grid item>
               <CardMedia
                 sx={{
-                  height: { xs: "20vh", md: "20vh" },
-                  width: { xs: "30vw", md: "10vw" },
+                  height: { xs: "20vh", sm: '15vw' ,md: "20vh" },
+                  width: { xs: "30vw", sm: '15vw' ,md: "10vw" },
                   boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
                   border: "1px solid #ac7d65",
                   borderRadius: "100%",

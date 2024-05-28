@@ -16,11 +16,12 @@ const Theme = createTheme({
       styleOverrides: {
         body: {
           backgroundImage: `url(/assets/Mienar.gif)`,
+          backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          width: '96vw',
-          height: '40vw',
+          width: {xs: "0px", sm: "600px", md: "900px", lg: "1200px", xl: "1536px"},
+          height: {xs: "0px", sm: "600px", md: "900px", lg: "1200px", xl: "1536px"},
           imageRendering: 'auto',
           margin: 0,
           padding: 0,
