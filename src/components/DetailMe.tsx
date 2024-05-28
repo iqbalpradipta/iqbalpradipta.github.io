@@ -13,7 +13,7 @@ function DetailMe() {
   useEffect(() => {
     gsap.to(boxRef.current, { 
         duration: 2, 
-        x: -25, 
+        x: -15, 
         opacity: "91%",
         ease: "power2.out",
         scrollTrigger: {
@@ -28,9 +28,9 @@ function DetailMe() {
     <>
       <Box
         sx={{
-          height: { xs: "100vh", sm: "40vh", md: "80vh" },
+          height: { xs: "120vh", sm: "40vh", md: "80vh" },
           width: {
-            xs: "130vw",
+            xs: "140vw",
             sm: "100vw",
             md: "80vw",
             lg: "50vw",
@@ -44,7 +44,7 @@ function DetailMe() {
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
           opacity: 0,
-          mx: 8,
+          mx: 2,
           ...styles.scrollBox,
         }}
         ref={boxRef}

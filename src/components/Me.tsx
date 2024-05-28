@@ -8,21 +8,21 @@ import gsap from "gsap";
 import DownloadCV from "./Button/downloadCV";
 
 export default function Me() {
-  const boxRef = useRef<HTMLDivElement>(null)
+  const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.to(boxRef.current, { 
-        duration: 2, 
-        x: 50, 
-        opacity: "91%",
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: boxRef.current,  
-            start: "top 75%",            
-            end: "top 50%",               
-        }
+    gsap.to(boxRef.current, {
+      duration: 2,
+      x: 5,
+      opacity: "91%",
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 75%",
+        end: "top 50%",
+      },
     });
-}, []);
+  }, []);
   return (
     <>
       <Box
@@ -31,6 +31,7 @@ export default function Me() {
           width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "20vw", xl: "10vw" },
           my: 3,
           display: "flex",
+          justifyContent: "center",
           alignItems: "center",
           gap: 4,
           p: 2,
@@ -39,7 +40,7 @@ export default function Me() {
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
           opacity: 0,
-          mx: 4
+          mx: 6,
         }}
         ref={boxRef}
       >
@@ -56,8 +57,8 @@ export default function Me() {
             <Grid item>
               <CardMedia
                 sx={{
-                  height: { xs: "20vh", sm: '15vw' ,md: "20vh" },
-                  width: { xs: "30vw", sm: '15vw' ,md: "10vw" },
+                  height: { xs: "20vh", sm: "15vw", md: "20vh" },
+                  width: { xs: "30vw", sm: "15vw", md: "10vw" },
                   boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
                   border: "1px solid #ac7d65",
                   borderRadius: "100%",
@@ -65,7 +66,7 @@ export default function Me() {
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  top: "-60px",
+                  top: "-70px",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
@@ -91,7 +92,7 @@ export default function Me() {
               </Typography>
             </Grid>
             <Grid item mt="20px">
-              <Box sx={{fontWeight: 'bold'}}>Let's Connect With Me !</Box>
+              <Box sx={{ fontWeight: "bold" }}>Let's Connect With Me !</Box>
               <GithubButton />
               <LinkedInButton />
               <EmailButton />

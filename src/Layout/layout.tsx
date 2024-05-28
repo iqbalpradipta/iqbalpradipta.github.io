@@ -25,6 +25,7 @@ function Layout() {
             container
             rowSpacing={1}
             columnSpacing={{ xs: 2, sm: 1, md: 1 }}
+            display='flex'
           >
             <Me />
             <Outlet />
