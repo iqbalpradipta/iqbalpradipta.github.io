@@ -44,7 +44,7 @@ function DetailMe() {
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
           opacity: 0,
-          mx: 10,
+          mx: 8,
           ...styles.scrollBox,
         }}
         ref={boxRef}

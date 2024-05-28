@@ -39,7 +39,7 @@ export default function Me() {
           boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
           backgroundColor: "#6b5449",
           opacity: 0,
-          mx: 6
+          mx: 4
         }}
         ref={boxRef}
       >
