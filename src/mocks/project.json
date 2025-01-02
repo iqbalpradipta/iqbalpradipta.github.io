@@ -1,0 +1,32 @@
+[
+    {
+        "image": "/assets/CircleApps.png",
+        "title": "Circle Apps",
+        "description": "Building Social media experiences with feature Login, Register, Posts, Replies, Follows, and Likes. Developed using Typescript, React.js, and PostgreSQL",
+        "source": "https://github.com/iqbalpradipta/Thread-Apps"
+    },
+    {
+        "image": "/assets/Guest The Place (1).png",
+        "title": "Trivia Apps",
+        "description": "A multiplayer game where users can connect with each other and play charades. this application is built with node.js, express.js, websocket.",
+        "source": "https://github.com/orgs/TEAM-4-GUEST-THE-PLACE/repositories"
+    },
+    {
+        "image": "/assets/Noyo.png",
+        "title": "NoYo",
+        "description": "Developed an online hotel booking system similar to Airbnb. Built with React JS, Node.js, Express.js, TypeScript, and MongoDB.",
+        "source": "https://github.com/iqbalpradipta/NoYo"
+    },
+    {
+        "image": "/assets/Baltify.png",
+        "title": "Baltify (Frontend & Bakcend not integrate)",
+        "description": "Devloped an online music player like spotify. Build with React JS, Node.js, Express.js, TypeScript and MongoDB",
+        "source": "https://github.com/iqbalpradipta/Baltify"
+    },
+    {
+        "image": "/assets/BalPay.png",
+        "title": "BalPay (Not Integrate FE & BE)",
+        "description": "Building E-commerce with feature Login, Register, and Payment Gateway. Developed using Typescript, React.js, Express JS, Golang, and PostgreSQL",
+        "source": "https://github.com/iqbalpradipta/BalPay"
+    }
+]

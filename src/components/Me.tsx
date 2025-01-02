@@ -28,7 +28,7 @@ export default function Me() {
       <Box
         sx={{
           height: { xs: "90vh", sm: "90vh", md: "80vh" },
-          width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "20vw", xl: "10vw" },
+          width: { xs: "90vw", sm: "70vw", md: "50vw", lg: "30vw" },
           my: 3,
           display: "flex",
           justifyContent: "center",
@@ -51,14 +51,14 @@ export default function Me() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            flexDirection: { xs: "column", sm: "row" },
           }}
-        >
-          <Box sx={{ position: "relative", bottom: "-50px" }}>
+        > <Box sx={{ position: "relative", bottom: { xs: "-80px", sm: "-60px" } }}>
             <Grid item>
               <CardMedia
                 sx={{
-                  height: { xs: "20vh", sm: "15vw", md: "20vh" },
-                  width: { xs: "30vw", sm: "15vw", md: "10vw" },
+                  height: { xs: "25vh", sm: "15vw", md: "20vh", lg: "20vh" },
+                  width: { xs: "40vw", sm: "15vw", md: "10vw", lg: "10vw" },
                   boxShadow: "14px -7px 19px -3px rgba(79,79,79,0.58)",
                   border: "1px solid #ac7d65",
                   borderRadius: "100%",
@@ -66,7 +66,7 @@ export default function Me() {
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  top: "-70px",
+                  top: { xs: -100, sm: -80, md: -100, lg: -70, xl: -120 },
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                 }}
@@ -91,8 +91,8 @@ export default function Me() {
                 Back-end Developer
               </Typography>
             </Grid>
-            <Grid item mt="20px">
-              <Box sx={{ fontWeight: "bold" }}>Let's Connect With Me !</Box>
+            <Grid item mt="20px" sx={{ textAlign: "center" }}>
+              <Box sx={{ fontWeight: "bold" }}>Let's Connect With Me!</Box>
               <GithubButton />
               <LinkedInButton />
               <EmailButton />

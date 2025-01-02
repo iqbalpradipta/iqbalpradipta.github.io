@@ -8,7 +8,7 @@ function DownloadCV() {
       <Button
         variant="contained"
         startIcon={<SimCardDownloadIcon style={{ color: "white", margin: '0' }} />}
-        href="https://drive.google.com/uc?export=download&id=1dMMCQqlbkc5hSCxujUJwRHlZENnKh8Tl"
+        href="https://drive.google.com/uc?export=download&id=11QYwP_KFPhfugoLNlgPll3UwEb4KeF1J"
         target="_blank"
         sx={{
           backgroundColor: '#ac7d64',
