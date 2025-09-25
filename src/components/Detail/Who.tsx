@@ -10,10 +10,14 @@ function Who() {
           Who am I ?
         </Typography>
         <Typography>
-          As a backend developer, I leverage my keen eye for detail, passion for
-          building, and mission-focused approach to drive meaningful change. I'm
-          eager to contribute and make a substantial impact at a dynamic,
-          fast-growing company.
+          Enthusiastic Fullstack Developer with a strong interest in backend
+          development using Node.js and practical experience through
+          self-initiated and team-based projects. Built and deployed several
+          applications, including a scalable social media platform and a
+          real-time trivia game using React.js/Next.js. Passionate about
+          learning new technologies, writing clean code, and solving real-world
+          problems through software. Eager to contribute to a collaborative
+          development team and grow as a software engineer.
         </Typography>
       </Box>
     </>
