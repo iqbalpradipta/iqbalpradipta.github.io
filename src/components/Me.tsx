@@ -3,25 +3,69 @@ import GithubButton from "./Button/githubButton";
 import LinkedInButton from "./Button/linkedInButton";
 import EmailButton from "./Button/emailButton";
 import WhatsAppButton from "./Button/whatsAppButton";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DownloadCV from "./Button/downloadCV";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Me() {
   const boxRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    gsap.to(boxRef.current, {
-      duration: 2,
-      x: 5,
-      opacity: "91%",
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: boxRef.current,
-        start: "top 75%",
-        end: "top 50%",
-      },
-    });
+  useLayoutEffect(() => {
+    if (!boxRef.current) {
+      return undefined;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.set(boxRef.current, { autoAlpha: 0, y: 46, scale: 0.94, filter: "blur(10px)" });
+      gsap.set(".profile-avatar", { autoAlpha: 0, y: -28, scale: 0.8 });
+      gsap.set(".profile-info", { autoAlpha: 0, y: 14 });
+      gsap.set(".profile-divider", { autoAlpha: 0, width: 0 });
+      gsap.set(".profile-actions > *", { autoAlpha: 0, y: 18 });
+
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: boxRef.current,
+          start: "top 82%",
+          once: true,
+        },
+      });
+
+      tl.to(boxRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.8,
+      })
+        .to(
+          ".profile-avatar",
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 },
+          "-=0.45"
+        )
+        .to(
+          ".profile-info",
+          { autoAlpha: 1, y: 0, duration: 0.45 },
+          "-=0.3"
+        )
+        .to(
+          ".profile-divider",
+          { width: "100%", autoAlpha: 1, duration: 0.4 },
+          "-=0.25"
+        )
+        .to(
+          ".profile-actions > *",
+          { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.1 },
+          "-=0.2"
+        );
+    }, boxRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -36,7 +80,8 @@ export default function Me() {
           flexGrow: { xs: 0, md: 1 },
           maxWidth: { xs: "100%", sm: "100%", md: 380 },
           mx: "auto",
-          my: { xs: 1.25, md: 2.5 },
+          mt: { xs: 0.75, md: 1.6 },
+          mb: { xs: 0, md: 0 },
           px: { xs: 2, sm: 3, md: 4 },
           pt: { xs: 7, sm: 9, md: 13 },
           pb: { xs: 3.5, sm: 4.5, md: 5.5 },
@@ -52,6 +97,7 @@ export default function Me() {
           gap: { xs: 1.8, sm: 2.4, md: 3 },
           opacity: 0,
         }}
+        className="profile-card"
       >
         <CardMedia
           component="img"
@@ -66,11 +112,13 @@ export default function Me() {
             objectFit: "cover",
             mt: { xs: -6, sm: -8, md: -10 },
           }}
+          className="profile-avatar"
         />
         <Stack
           spacing={{ xs: 0.5, sm: 0.7, md: 0.8 }}
           alignItems="center"
           sx={{ width: "100%", mt: { xs: 0.25, sm: 0.5, md: 0 } }}
+          className="profile-info"
         >
           <Typography
             variant="h6"
@@ -86,6 +134,7 @@ export default function Me() {
         </Stack>
         <Divider
           sx={{ width: "100%", borderColor: "rgba(255,255,255,0.18)" }}
+          className="profile-divider"
         />
         <Stack
           spacing={{ xs: 0.7, sm: 0.95, md: 1.1 }}
@@ -95,6 +144,7 @@ export default function Me() {
             flexGrow: { xs: 0, sm: 0, md: 1 },
             justifyContent: { xs: "flex-start", md: "center" },
           }}
+          className="profile-actions"
         >
           <Typography
             component="span"

@@ -18,7 +18,7 @@ function Layout() {
 
   return (
     <>
-      <Container maxWidth="lg" sx={{ py: 2 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 1, md: 1.5 } }}>
         <Navbar />
         <Grid
           container
