@@ -1,0 +1,30 @@
+{
+  "greeting": "Halo! Pilih pertanyaan umum di bawah untuk melihat jawabannya.",
+  "items": [
+    {
+      "id": "skills",
+      "question": "Teknologi apa saja yang kamu gunakan?",
+      "answer": "Saya bekerja dengan JavaScript, TypeScript, React/Next.js di sisi frontend serta Node.js, Express, dan PostgreSQL di sisi backend."
+    },
+    {
+      "id": "project-flow",
+      "question": "Bagaimana alur kerja saat membangun project?",
+      "answer": "Saya memulai dari briefing kebutuhan, membuat wireframe, membangun API dan UI secara iteratif, lalu menyiapkan otomatisasi deployment."
+    },
+    {
+      "id": "availability",
+      "question": "Apakah tersedia untuk kolaborasi freelance?",
+      "answer": "Ya, saya terbuka untuk kolaborasi freelance maupun full-time, terutama pada project web apps dan integrasi Web3."
+    },
+    {
+      "id": "contact",
+      "question": "Bagaimana cara menghubungi kamu?",
+      "answer": "Anda dapat mengirim email ke iqbalpradipta2@gmail.com atau chat langsung lewat tombol WhatsApp di profil."
+    },
+    {
+      "id": "timeline",
+      "question": "Berapa estimasi waktu pengerjaan aplikasi kecil?",
+      "answer": "Untuk aplikasi MVP dengan fitur standar biasanya memerlukan 2-4 minggu tergantung kompleksitas integrasi."
+    }
+  ]
+}

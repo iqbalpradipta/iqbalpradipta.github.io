@@ -1,68 +1,106 @@
-#loader-container {
-  max-width: 200vw;
+.loading-screen {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: #f7ede3;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-#loader path:nth-child(2) {
-  stroke-dasharray: 200%;
-  stroke-dashoffset: 200%;
-  animation: strokeAnimate 2s 0s ease forwards;
+.loading-header {
+  width: min(76vw, 420px);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: rgba(247, 237, 227, 0.88);
+  font-weight: 600;
 }
 
-#loader path:nth-child(3) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 0.3s ease forwards;
-}
-#loader path:nth-child(4) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 0.9s ease forwards;
-}
-#loader path:nth-child(5) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 1.2s ease forwards;
-}
-#loader path:nth-child(6) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 1.5s ease forwards;
-}
-#loader path:nth-child(7) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 1.8s ease forwards;
-}
-#loader path:nth-child(8) {
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  animation: strokeAnimate 2s 2.1s ease forwards;
+.loading-header span:first-child {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ad8269;
 }
 
-@keyframes strokeAnimate {
-  to {
-    stroke-dashoffset: 0;
+.loading-progress-value {
+  font-variant-numeric: tabular-nums;
+  color: #d9b59a;
+  font-weight: 600;
+}
+
+.loading-bar {
+  width: min(76vw, 420px);
+}
+
+.loading-bar-border {
+  position: relative;
+  height: 28px;
+  border: 2px solid rgba(205, 159, 123, 0.82);
+  border-radius: 6px;
+  background: rgba(107, 84, 73, 0.42);
+  box-shadow:
+    0 0 14px rgba(173, 130, 105, 0.32),
+    0 0 28px rgba(107, 84, 73, 0.28);
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f5e1c8 0%, #d5a685 40%, #ad8269 75%, #6b5449 100%);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.18);
+  transition: width 0.24s ease-out;
+  overflow: hidden;
+}
+
+.loading-bar-fill:not([style*="width: 0%" i]) {
+  min-width: 10px;
+}
+
+.loading-bar-stripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(245, 225, 200, 0.32) 0px,
+    rgba(245, 225, 200, 0.32) 20px,
+    rgba(245, 225, 200, 0) 20px,
+    rgba(245, 225, 200, 0) 40px
+  );
+  mix-blend-mode: screen;
+  animation: stripes-slide 1.4s linear infinite;
+}
+
+@keyframes stripes-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40px);
   }
 }
 
-@media screen and (max-width: 768px) {
-  #loader-container {
-    max-width: 150px;
+@media (max-width: 640px) {
+  .loading-screen {
+    gap: 12px;
   }
-  #loader {
-    width: 150px;
-  }
-}
 
-@media screen and (max-width: 650px) {
-  #loader-container {
-    max-width: 100px;
+  .loading-header {
+    letter-spacing: 0.1em;
   }
-  #loader {
-    width: 100px;
+
+  .loading-bar-border {
+    height: 24px;
   }
 }

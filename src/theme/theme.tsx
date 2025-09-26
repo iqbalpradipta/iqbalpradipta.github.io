@@ -20,10 +20,14 @@ const Theme = createTheme({
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          width: {xs: "0px", sm: "600px", md: "900px", lg: "1200px", xl: "1536px"},
-          height: {xs: "0px", sm: "600px", md: "900px", lg: "1200px", xl: "1536px"},
           imageRendering: 'auto',
+          minHeight: '100vh',
+          overflowX: 'hidden',
+          overflowY: 'auto',
           margin: 0,
+          '@media (max-width:900px)': {
+            minHeight: 'auto',
+          },
           padding: 0,
           '@media (max-width:600px)': {
             backgroundSize: 'cover',
@@ -45,3 +49,7 @@ const Theme = createTheme({
 });
 
 export default Theme;
+
+
+
+
