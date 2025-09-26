@@ -21,7 +21,12 @@ export default function Me() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.set(boxRef.current, { autoAlpha: 0, y: 46, scale: 0.94, filter: "blur(10px)" });
+      gsap.set(boxRef.current, {
+        autoAlpha: 0,
+        y: 46,
+        scale: 0.94,
+        filter: "blur(10px)",
+      });
       gsap.set(".profile-avatar", { autoAlpha: 0, y: -28, scale: 0.8 });
       gsap.set(".profile-info", { autoAlpha: 0, y: 14 });
       gsap.set(".profile-divider", { autoAlpha: 0, width: 0 });
@@ -48,11 +53,7 @@ export default function Me() {
           { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 },
           "-=0.45"
         )
-        .to(
-          ".profile-info",
-          { autoAlpha: 1, y: 0, duration: 0.45 },
-          "-=0.3"
-        )
+        .to(".profile-info", { autoAlpha: 1, y: 0, duration: 0.45 }, "-=0.3")
         .to(
           ".profile-divider",
           { width: "100%", autoAlpha: 1, duration: 0.4 },
@@ -76,7 +77,7 @@ export default function Me() {
           width: "100%",
           height: { xs: "auto", md: "100%" },
           minHeight: { xs: "auto", sm: "auto", md: "70vh" },
-          maxHeight: { xs: "none", sm: "none", md: "82vh" },
+          maxHeight: { xs: "none", sm: "none", md: "80vh" },
           flexGrow: { xs: 0, md: 1 },
           maxWidth: { xs: "100%", sm: "100%", md: 380 },
           mx: "auto",

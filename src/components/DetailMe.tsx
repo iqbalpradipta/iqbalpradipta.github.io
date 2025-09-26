@@ -1,12 +1,20 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import Who from "./Detail/Who";
 import Project from "./Detail/Project";
+import Game from "./Detail/Game";
 import Scrollbar from "./Custom/Scroll";
-import { useRef, useEffect, useState, SyntheticEvent, useLayoutEffect } from "react";
+import {
+  useRef,
+  useEffect,
+  useState,
+  SyntheticEvent,
+  useLayoutEffect,
+} from "react";
 import gsap from "gsap";
 import { styled } from "@mui/material/styles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import FolderSpecialOutlinedIcon from "@mui/icons-material/FolderSpecialOutlined";
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
 
 function DetailMe() {
   const styles = Scrollbar();
@@ -29,7 +37,12 @@ function DetailMe() {
         filter: "blur(12px)",
         boxShadow: "0 4px 18px rgba(0,0,0,0.15)",
       });
-      gsap.set(".detail-tab", { autoAlpha: 0, y: 18, rotateX: -35, transformOrigin: "50% 0%" });
+      gsap.set(".detail-tab", {
+        autoAlpha: 0,
+        y: 18,
+        rotateX: -35,
+        transformOrigin: "50% 0%",
+      });
       gsap.set(".detail-panel", { autoAlpha: 0, y: 28, filter: "blur(12px)" });
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -103,7 +116,7 @@ function DetailMe() {
         maxWidth: { xs: "100%", sm: "100%", md: 720, lg: 780, xl: 840 },
         height: { xs: "auto", md: "100%" },
         minHeight: { xs: "auto", sm: "auto", md: "70vh" },
-        maxHeight: { xs: "none", sm: "none", md: "82vh" },
+        maxHeight: { xs: "none", sm: "none", md: "80vh" },
         mt: { xs: 0.6, sm: 1.2, md: 1.6 },
         mb: { xs: 0, md: 0 },
         mx: "auto",
@@ -119,7 +132,12 @@ function DetailMe() {
       }}
     >
       <TabsWrapper>
-        <StyledTabs value={tabIndex} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
+        <StyledTabs
+          value={tabIndex}
+          onChange={handleTabChange}
+          variant="scrollable"
+          scrollButtons="auto"
+        >
           <StyledTab
             disableRipple
             icon={<PersonOutlineOutlinedIcon fontSize="small" />}
@@ -132,6 +150,13 @@ function DetailMe() {
             icon={<FolderSpecialOutlinedIcon fontSize="small" />}
             iconPosition="start"
             label="Projects"
+            className="detail-tab"
+          />
+          <StyledTab
+            disableRipple
+            icon={<SportsEsportsOutlinedIcon fontSize="small" />}
+            iconPosition="start"
+            label="Games"
             className="detail-tab"
           />
         </StyledTabs>
@@ -176,6 +201,22 @@ function DetailMe() {
             <Project />
           </Box>
         )}
+        {tabIndex === 2 && (
+          <Box
+            key="games"
+            ref={panelRef}
+            role="tabpanel"
+            className="detail-panel"
+            sx={{
+              flexGrow: 1,
+              mt: { xs: 1.2, sm: 1.6 },
+              pr: { xs: 0.3, sm: 1 },
+              ...styles.scrollBox,
+            }}
+          >
+            <Game />
+          </Box>
+        )}
       </Box>
     </Box>
   );
@@ -189,7 +230,7 @@ const TabsWrapper = styled(Box)(() => ({
   alignItems: "flex-end",
   padding: "0 8px 8px",
   overflow: "visible",
-  '&::after': {
+  "&::after": {
     content: '""',
     position: "absolute",
     left: 8,
@@ -204,17 +245,17 @@ const StyledTabs = styled(Tabs)(() => ({
   minHeight: 0,
   padding: 0,
   overflow: "visible",
-  '& .MuiTabs-scroller': {
+  "& .MuiTabs-scroller": {
     overflow: "visible",
   },
-  '& .MuiTabs-flexContainer': {
+  "& .MuiTabs-flexContainer": {
     gap: 18,
     alignItems: "flex-end",
   },
-  '& .MuiTabs-indicator': {
+  "& .MuiTabs-indicator": {
     display: "none",
   },
-  '& .MuiButtonBase-root': {
+  "& .MuiButtonBase-root": {
     minHeight: 0,
   },
 }));
@@ -239,17 +280,17 @@ const StyledTab = styled(Tab)(() => ({
   transition: "all 0.25s ease",
   lineHeight: 1,
   display: "inline-flex",
-  '&:hover': {
+  "&:hover": {
     background: "rgba(107,84,73,0.92)",
     color: "#fff",
   },
-  '&.Mui-selected': {
+  "&.Mui-selected": {
     background: "rgba(54,31,24,0.92)",
     color: "#fff",
     boxShadow: "0 12px 24px rgba(0,0,0,0.4)",
     zIndex: 3,
   },
-  '&::after': {
+  "&::after": {
     content: '""',
     position: "absolute",
     top: 1,
@@ -264,25 +305,25 @@ const StyledTab = styled(Tab)(() => ({
     transform: "skewX(-28deg)",
     zIndex: -1,
   },
-  '&.Mui-selected::after': {
+  "&.Mui-selected::after": {
     background: "rgba(54,31,24,0.92)",
   },
-  '&:last-of-type': {
+  "&:last-of-type": {
     marginRight: 0,
   },
-  '& .MuiTab-iconWrapper': {
+  "& .MuiTab-iconWrapper": {
     marginBottom: 0,
     marginRight: 10,
     color: "rgba(255,255,255,0.8)",
   },
-  '&.Mui-selected .MuiTab-iconWrapper': {
+  "&.Mui-selected .MuiTab-iconWrapper": {
     color: "#fff",
   },
-  '@media (max-width: 900px)': {
+  "@media (max-width: 900px)": {
     fontSize: "0.72rem",
     paddingInline: 22,
   },
-  '@media (max-width: 600px)': {
+  "@media (max-width: 600px)": {
     fontSize: "0.68rem",
     paddingInline: 18,
     paddingBlock: 10,

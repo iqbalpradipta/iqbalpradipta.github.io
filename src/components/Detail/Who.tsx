@@ -77,16 +77,15 @@ const trainingHighlights = [
   "Capstone: Built Circle-apps with a full-featured social platform workflow.",
 ];
 
-const machineResponsibilities = [
-  "Loaded products into machining lines and monitored processing sequences.",
-  "Removed defects and trimmed excess material to ensure production readiness.",
-  "Closed the production cycle and prepared final goods for shipment.",
-];
-
-const inspectionResponsibilities = [
-  "Validated outgoing products against quality benchmarks before release.",
-  "Flagged and separated items that required rework or disposal.",
-];
+const workExperience = {
+  company: "PT.Aigen Global Teknologi",
+  role: "Jr. Full-Stack Developer (August 25 - Present)",
+  highlights: [
+    "Developed and maintained responsive web interfaces using Next.js, improving overall user experience.",
+    "Contributed to full-stack feature development, supporting both frontend and backend tasks as needed.",
+    "Integrated backend services via RESTful APIs.",
+  ],
+};
 
 const certifications = [
   "Learn Go Course - Codecademy (Feb 2023)",
@@ -178,34 +177,18 @@ function Who() {
       <Box sx={sectionWrapperSx}>
         <Typography sx={sectionTitleSx}>Work Experience</Typography>
         <Typography sx={{ fontWeight: 600, color: "rgba(255,255,255,0.82)" }}>
-          PT. JFE Steel Galvanizing Indonesia - Junior Operator (Aug 2018 - Aug 2020)
+          {workExperience.company}
         </Typography>
-        <Stack spacing={1.5} sx={{ mt: 1.2 }}>
-          <Box>
-            <Typography sx={{ fontWeight: 600, color: "rgba(255,255,255,0.72)" }}>
-              Inspection Product
+        <Typography sx={{ fontWeight: 500, color: "rgba(255,255,255,0.8)" }}>
+          {workExperience.role}
+        </Typography>
+        <Box component="ul" sx={{ pl: 2.4, m: 0, mt: 1.2 }}>
+          {workExperience.highlights.map((item) => (
+            <Typography key={item} component="li" sx={{ ...listTextSx, mb: 0.6 }}>
+              {item}
             </Typography>
-            <Box component="ul" sx={{ pl: 2.4, m: 0 }}>
-              {inspectionResponsibilities.map((item) => (
-                <Typography key={item} component="li" sx={{ ...listTextSx, mb: 0.6 }}>
-                  {item}
-                </Typography>
-              ))}
-            </Box>
-          </Box>
-          <Box>
-            <Typography sx={{ fontWeight: 600, color: "rgba(255,255,255,0.72)" }}>
-              Control Machine Process
-            </Typography>
-            <Box component="ul" sx={{ pl: 2.4, m: 0 }}>
-              {machineResponsibilities.map((item) => (
-                <Typography key={item} component="li" sx={{ ...listTextSx, mb: 0.6 }}>
-                  {item}
-                </Typography>
-              ))}
-            </Box>
-          </Box>
-        </Stack>
+          ))}
+        </Box>
       </Box>
 
       <Box sx={sectionWrapperSx}>

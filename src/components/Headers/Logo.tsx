@@ -10,10 +10,18 @@ export default function Logo() {
       sx={{
         display: "inline-flex",
         alignItems: { xs: "center", sm: "flex-end" },
-        gap: { xs: 1.8, sm: 2.4 },
+        gap: { xs: 1.1, sm: 1.6 },
+        px: { xs: 1.1, sm: 1.6 },
+        py: { xs: 0.7, sm: 1 },
+        borderRadius: "18px",
+        border: "1px solid rgba(255,255,255,0.18)",
+        background:
+          "linear-gradient(135deg, rgba(41,30,24,0.78) 0%, rgba(103,77,63,0.66) 100%)",
+        boxShadow: "0 22px 34px rgba(0,0,0,0.42)",
+        backdropFilter: "blur(8px)",
       }}
     >
-      <Box sx={{ width: { xs: 52, sm: 68 }, height: { xs: 44, sm: 56 } }}>
+      <Box sx={{ width: { xs: 40, sm: 54 }, height: { xs: 32, sm: 44 } }}>
         <svg viewBox="0 0 68 56" width="100%" height="100%">
           <polyline
             points="12,10 12,46"
@@ -55,12 +63,19 @@ export default function Logo() {
           />
         </svg>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 0.45, lineHeight: 0.9 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 0.45,
+          lineHeight: 0.9,
+        }}
+      >
         <Typography
           component="span"
           sx={{
             fontFamily: '"Poppins", "Noto Sans", sans-serif',
-            fontSize: { xs: "1.05rem", sm: "1.35rem" },
+            fontSize: { xs: "0.92rem", sm: "1.18rem" },
             fontWeight: 700,
             letterSpacing: 4.4,
             textTransform: "uppercase",
@@ -74,7 +89,7 @@ export default function Logo() {
           component="span"
           sx={{
             fontFamily: '"Poppins", "Noto Sans", sans-serif',
-            fontSize: { xs: "1.05rem", sm: "1.35rem" },
+            fontSize: { xs: "0.92rem", sm: "1.18rem" },
             fontWeight: 700,
             letterSpacing: 4.4,
             textTransform: "uppercase",
