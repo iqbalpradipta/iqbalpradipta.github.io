@@ -32,10 +32,10 @@ function Game() {
           textTransform: "uppercase",
         }}
       >
-        Games
+        My Games
       </Typography>
       <Typography sx={{ mt: 1.2, mb: 1.8, lineHeight: 1.7 }}>
-        Koleksi game ini terbagi dalam dua pendekatan: eksperimen Web3 yang menonjolkan kepemilikan digital serta game HTML5 ringan yang siap dimainkan langsung di browser.
+        This library blends Web3 experiments that explore digital ownership with HTML5 arcade builds you can launch instantly in the browser.
       </Typography>
 
       <Divider sx={{ borderColor: "#ad8269" }} />
@@ -89,7 +89,7 @@ function Game() {
                 },
               }}
             >
-              Mainkan Sekarang
+              Play Now
             </Button>
           </Stack>
         </Stack>

@@ -2,6 +2,7 @@ import { Box, Tab, Tabs } from "@mui/material";
 import Who from "./Detail/Who";
 import Project from "./Detail/Project";
 import Game from "./Detail/Game";
+import Shop from "./Detail/Shop";
 import Scrollbar from "./Custom/Scroll";
 import {
   useRef,
@@ -14,6 +15,7 @@ import gsap from "gsap";
 import { styled } from "@mui/material/styles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import FolderSpecialOutlinedIcon from "@mui/icons-material/FolderSpecialOutlined";
+import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
 
 function DetailMe() {
@@ -136,7 +138,6 @@ function DetailMe() {
           value={tabIndex}
           onChange={handleTabChange}
           variant="scrollable"
-          scrollButtons="auto"
         >
           <StyledTab
             disableRipple
@@ -156,7 +157,14 @@ function DetailMe() {
             disableRipple
             icon={<SportsEsportsOutlinedIcon fontSize="small" />}
             iconPosition="start"
-            label="Games"
+            label="My Games"
+            className="detail-tab"
+          />
+          <StyledTab
+            disableRipple
+            icon={<StorefrontOutlinedIcon fontSize="small" />}
+            iconPosition="start"
+            label="My Service"
             className="detail-tab"
           />
         </StyledTabs>
@@ -217,6 +225,22 @@ function DetailMe() {
             <Game />
           </Box>
         )}
+        {tabIndex === 3 && (
+          <Box
+            key="shop"
+            ref={panelRef}
+            role="tabpanel"
+            className="detail-panel"
+            sx={{
+              flexGrow: 1,
+              mt: { xs: 1.2, sm: 1.6 },
+              pr: { xs: 0.3, sm: 1 },
+              ...styles.scrollBox,
+            }}
+          >
+            <Shop />
+          </Box>
+        )}
       </Box>
     </Box>
   );
@@ -225,28 +249,35 @@ function DetailMe() {
 export default DetailMe;
 
 const TabsWrapper = styled(Box)(() => ({
+  width: "100%",
   position: "relative",
   display: "flex",
   alignItems: "flex-end",
-  padding: "0 8px 8px",
+  padding: "0 0 12px",
   overflow: "visible",
   "&::after": {
     content: '""',
     position: "absolute",
-    left: 8,
-    right: 8,
+    left: 0,
+    right: 0,
     bottom: 0,
     height: 1,
-    background: "rgba(255,255,255,0.24)",
+    background: "rgba(255,255,255,0.28)",
+    opacity: 0.7,
   },
 }));
 
 const StyledTabs = styled(Tabs)(() => ({
+  width: "100%",
+  marginBottom: -6,
   minHeight: 0,
   padding: 0,
   overflow: "visible",
   "& .MuiTabs-scroller": {
     overflow: "visible",
+  },
+  "& .MuiTabs-scrollButtons": {
+    display: "none",
   },
   "& .MuiTabs-flexContainer": {
     gap: 18,
@@ -265,67 +296,79 @@ const StyledTab = styled(Tab)(() => ({
   padding: 0,
   position: "relative",
   fontWeight: 600,
-  letterSpacing: 0.6,
+  letterSpacing: 0.58,
   textTransform: "uppercase",
   fontSize: "0.78rem",
   paddingInline: 28,
-  paddingBlock: 12,
-  color: "rgba(255,255,255,0.8)",
-  background: "rgba(92,65,53,0.78)",
-  border: "1px solid rgba(255,255,255,0.26)",
+  paddingBlock: 13,
+  color: "rgba(58,37,22,0.92)",
+  background: "linear-gradient(180deg, rgba(241,212,191,0.97) 0%, rgba(213,170,144,0.95) 100%)",
+  border: "1px solid rgba(141,98,70,0.32)",
   borderBottom: "none",
-  borderRadius: "16px 16px 0 0",
-  clipPath: "polygon(0 0, calc(100% - 20px) 0, 100% 100%, 0 100%)",
-  boxShadow: "0 6px 18px rgba(0,0,0,0.35)",
-  transition: "all 0.25s ease",
-  lineHeight: 1,
+  borderRadius: "26px 26px 0 0",
+  boxShadow: "0 8px 16px rgba(0,0,0,0.22)",
+  transition: "transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease",
   display: "inline-flex",
-  "&:hover": {
-    background: "rgba(107,84,73,0.92)",
-    color: "#fff",
-  },
-  "&.Mui-selected": {
-    background: "rgba(54,31,24,0.92)",
-    color: "#fff",
-    boxShadow: "0 12px 24px rgba(0,0,0,0.4)",
-    zIndex: 3,
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 12,
+  lineHeight: 1,
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 1,
+    borderRadius: "24px 24px 0 0",
+    border: "1px solid rgba(255,255,255,0.28)",
+    opacity: 0.45,
+    pointerEvents: "none",
   },
   "&::after": {
     content: '""',
     position: "absolute",
-    top: 1,
-    right: -20,
-    width: 20,
-    height: "calc(100% - 1px)",
-    background: "inherit",
-    borderTop: "1px solid rgba(255,255,255,0.26)",
-    borderRight: "1px solid rgba(255,255,255,0.26)",
-    borderBottom: "none",
-    borderTopRightRadius: 14,
-    transform: "skewX(-28deg)",
-    zIndex: -1,
+    left: 0,
+    right: 0,
+    bottom: -9,
+    height: 12,
+    background: "rgba(0,0,0,0.18)",
+    filter: "blur(18px)",
+    opacity: 0,
+    transition: "opacity 0.22s ease",
+    borderRadius: 12,
+  },
+  "&:hover": {
+    background: "linear-gradient(180deg, rgba(247,225,206,0.98) 0%, rgba(224,182,156,0.97) 100%)",
+    color: "rgba(58,37,22,1)",
+    boxShadow: "0 12px 22px rgba(0,0,0,0.28)",
+  },
+  "&.Mui-selected": {
+    transform: "translateY(-6px)",
+    background: "linear-gradient(180deg, rgba(125,83,60,1) 0%, rgba(80,47,32,1) 100%)",
+    color: "#fff",
+    boxShadow: "0 18px 26px rgba(0,0,0,0.32)",
+  },
+  "&.Mui-selected::before": {
+    borderColor: "rgba(255,255,255,0.32)",
+    opacity: 0.55,
   },
   "&.Mui-selected::after": {
-    background: "rgba(54,31,24,0.92)",
-  },
-  "&:last-of-type": {
-    marginRight: 0,
+    opacity: 0.55,
   },
   "& .MuiTab-iconWrapper": {
     marginBottom: 0,
-    marginRight: 10,
-    color: "rgba(255,255,255,0.8)",
+    color: "rgba(91,62,44,0.88)",
+    transition: "color 0.22s ease",
   },
   "&.Mui-selected .MuiTab-iconWrapper": {
-    color: "#fff",
+    color: "#ffe9d9",
   },
   "@media (max-width: 900px)": {
     fontSize: "0.72rem",
     paddingInline: 22,
+    gap: 10,
   },
   "@media (max-width: 600px)": {
     fontSize: "0.68rem",
-    paddingInline: 18,
-    paddingBlock: 10,
+    paddingInline: 16,
+    paddingBlock: 11,
   },
 }));

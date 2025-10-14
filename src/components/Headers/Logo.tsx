@@ -1,13 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
-const CARD_GRADIENT = "linear-gradient(135deg, rgba(46,32,27,0.95) 0%, rgba(109,83,69,0.82) 55%, rgba(162,121,101,0.7) 100%)";
-const CARD_BORDER = "rgba(255,255,255,0.24)";
-const HIGHLIGHT_GRADIENT = "radial-gradient(circle at 18% 14%, rgba(255,255,255,0.35), rgba(255,255,255,0) 58%)";
-const LIGHT_STROKE = "rgba(255,247,238,0.96)";
-const LIGHT_ALT_STROKE = "rgba(255,247,238,0.78)";
-const ACCENT_STROKE = "rgba(246,160,121,0.98)";
+const PRIMARY_TEXT = "#fef5e7";
+const SECONDARY_TEXT = "#ffb694";
+const ICON_PRIMARY = "#fef5e7";
+const ICON_ACCENT = "#ffb694";
 const FONT_STACK = '"Poppins", "Noto Sans", sans-serif';
-const TEXT_SHADOW = "0 6px 16px rgba(8,0,0,0.42)";
+const TEXT_SHADOW = "0 4px 10px rgba(8,0,0,0.35)";
+const ICON_GLOW = "drop-shadow(0 10px 16px rgba(8,0,0,0.3))";
 
 export default function Logo() {
   return (
@@ -16,58 +15,39 @@ export default function Logo() {
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        gap: { xs: 1.3, sm: 1.9 },
-        px: { xs: 1.6, sm: 2.2 },
-        py: { xs: 1, sm: 1.3 },
-        minHeight: { xs: 56, sm: 68 },
-        borderRadius: { xs: "20px", sm: "26px" },
-        border: `1px solid ${CARD_BORDER}`,
-        background: CARD_GRADIENT,
-        boxShadow: "0 24px 36px rgba(12,5,2,0.52)",
-        backdropFilter: "blur(12px)",
-        overflow: "hidden",
-        isolation: "isolate",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          inset: 0,
-          background: HIGHLIGHT_GRADIENT,
-          zIndex: 0,
-        },
+        gap: { xs: 1, sm: 1.4 },
+        px: { xs: 0.8, sm: 1.1 },
+        py: { xs: 0.5, sm: 0.65 },
       }}
     >
       <Box
         sx={{
           position: "relative",
           zIndex: 1,
-          width: { xs: 44, sm: 58 },
-          height: { xs: 34, sm: 44 },
+          width: { xs: 28, sm: 36 },
+          height: { xs: 22, sm: 28 },
+          filter: ICON_GLOW,
         }}
       >
-        <svg
-          viewBox="0 0 68 56"
-          width="100%"
-          height="100%"
-          style={{ filter: "drop-shadow(0 8px 14px rgba(0,0,0,0.38))" }}
-        >
+        <svg viewBox="0 0 68 56" width="100%" height="100%">
           <polyline
             points="14,10 14,46"
             fill="none"
-            stroke={LIGHT_STROKE}
+            stroke={ICON_PRIMARY}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="14,10 28,10"
             fill="none"
-            stroke={LIGHT_ALT_STROKE}
+            stroke={ICON_PRIMARY}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="14,46 28,46"
             fill="none"
-            stroke={LIGHT_ALT_STROKE}
+            stroke={ICON_PRIMARY}
             strokeWidth={6}
             strokeLinecap="round"
           />
@@ -76,14 +56,14 @@ export default function Logo() {
             y1={10}
             x2={42}
             y2={46}
-            stroke={ACCENT_STROKE}
+            stroke={ICON_ACCENT}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="48,18 60,28 48,38"
             fill="none"
-            stroke={LIGHT_STROKE}
+            stroke={ICON_PRIMARY}
             strokeWidth={6}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -97,19 +77,19 @@ export default function Logo() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          gap: { xs: 0.35, sm: 0.45 },
-          lineHeight: 1,
+          gap: { xs: 0.28, sm: 0.34 },
+          lineHeight: 1.05,
         }}
       >
         <Typography
           component="span"
           sx={{
             fontFamily: FONT_STACK,
-            fontSize: { xs: "0.88rem", sm: "1.16rem" },
-            fontWeight: 700,
-            letterSpacing: { xs: 4.2, sm: 6.4 },
+            fontSize: { xs: "0.78rem", sm: "0.95rem" },
+            fontWeight: 800,
+            letterSpacing: { xs: 4.2, sm: 5.4 },
             textTransform: "uppercase",
-            color: LIGHT_STROKE,
+            color: PRIMARY_TEXT,
             textShadow: TEXT_SHADOW,
           }}
         >
@@ -119,11 +99,11 @@ export default function Logo() {
           component="span"
           sx={{
             fontFamily: FONT_STACK,
-            fontSize: { xs: "0.88rem", sm: "1.16rem" },
-            fontWeight: 700,
-            letterSpacing: { xs: 5, sm: 7.2 },
+            fontSize: { xs: "0.78rem", sm: "0.95rem" },
+            fontWeight: 800,
+            letterSpacing: { xs: 5.4, sm: 6.6 },
             textTransform: "uppercase",
-            color: ACCENT_STROKE,
+            color: SECONDARY_TEXT,
             textShadow: TEXT_SHADOW,
           }}
         >

@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+﻿import { Container, Grid } from "@mui/material";
 import Navbar from "../components/Headers/Navbar";
 import { Outlet } from "react-router-dom";
 import Me from "../components/Me";
@@ -10,7 +10,25 @@ function Layout() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 4500);
+    let isActive = true;
+    let timerId = 0;
+
+    const timerPromise = new Promise<void>((resolve) => {
+      timerId = window.setTimeout(resolve, 4500);
+    });
+
+    const preloadPromise = import("../components/DetailMe");
+
+    Promise.all([timerPromise, preloadPromise]).then(() => {
+      if (isActive) {
+        setLoading(false);
+      }
+    });
+
+    return () => {
+      isActive = false;
+      window.clearTimeout(timerId);
+    };
   }, []);
 
   if (loading) {
@@ -20,27 +38,32 @@ function Layout() {
   return (
     <>
       <Container
-        maxWidth="lg"
+        maxWidth={false}
+        disableGutters
         sx={{
+          width: "100%",
+          maxWidth: { xs: "100%", lg: "1240px", xl: "1400px" },
+          mx: "auto",
+          px: { xs: 1.4, sm: 2, md: 2.6 },
           py: { xs: 1.1, md: 1.4 },
-          minHeight: { xs: 'auto', md: '100vh' },
-          display: 'flex',
-          flexDirection: 'column',
-          overflowX: 'hidden',
-          overflowY: { xs: 'visible', md: 'auto' },
+          minHeight: { xs: "auto", md: "100vh" },
+          display: "flex",
+          flexDirection: "column",
+          overflowX: "hidden",
+          overflowY: { xs: "visible", md: "auto" },
         }}
       >
         <Navbar />
         <Grid
           container
-          rowSpacing={3}
-          columnSpacing={{ xs: 0, sm: 3, md: 4 }}
+          rowSpacing={{ xs: 2.2, md: 3 }}
+          columnSpacing={{ xs: 1.2, sm: 2.2, md: 3.2, xl: 3.8 }}
           justifyContent="center"
           sx={{
             flexGrow: 1,
             minHeight: 0,
-            overflow: 'visible',
-            alignItems: { xs: 'stretch', md: 'flex-start' },
+            overflow: "visible",
+            alignItems: { xs: "stretch", md: "flex-start" },
           }}
         >
           <Grid
@@ -50,7 +73,7 @@ function Layout() {
             lg={4}
             display="flex"
             justifyContent="center"
-            sx={{ alignItems: "stretch", minHeight: 0 }}
+            sx={{ alignItems: "stretch", minHeight: 0, height: "100%" }}
           >
             <Me />
           </Grid>
@@ -61,7 +84,7 @@ function Layout() {
             lg={8}
             display="flex"
             justifyContent="center"
-            sx={{ alignItems: "stretch", minHeight: 0 }}
+            sx={{ alignItems: "stretch", minHeight: 0, height: "100%" }}
           >
             <Outlet />
           </Grid>
@@ -73,8 +96,4 @@ function Layout() {
 }
 
 export default Layout;
-
-
-
-
 
