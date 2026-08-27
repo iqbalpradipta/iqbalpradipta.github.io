@@ -1,29 +1,33 @@
-import { Button } from "@mui/material";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-
+import { IconButton, Tooltip } from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 function EmailButton() {
   return (
-    <Button
-      variant="contained"
-      startIcon={<MailOutlineIcon style={{ color: "white", margin: '0' }} />}
-      href="mailto:iqbalpradipta2@gmail.com"
-      target="_blank"
-      sx={{
-        backgroundColor: 'red',
-        '&:hover': {
-          backgroundColor: '#db3333',
-          color: 'white',
-        },
-        width: '100%',
-        mt: '10px',
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      Email
-    </Button>
+    <Tooltip title="Send Email" arrow placement="top">
+      <IconButton
+        component="a"
+        href="mailto:iqbalpradipta2@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Email"
+        sx={{
+          color: "rgba(243, 237, 226, 0.8)",
+          background: "rgba(255, 255, 255, 0.04)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          borderRadius: "12px",
+          width: 44,
+          height: 44,
+          transition: "all 0.2s ease",
+          "&:hover": {
+            background: "rgba(255, 255, 255, 0.12)",
+            color: "#f3ede2",
+            transform: "translateY(-2px)",
+          },
+        }}
+      >
+        <MailOutlineIcon fontSize="small" />
+      </IconButton>
+    </Tooltip>
   );
 }
 

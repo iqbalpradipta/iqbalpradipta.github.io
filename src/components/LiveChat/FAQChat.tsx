@@ -1,12 +1,12 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { Box, Button, IconButton, Paper, Stack, Typography } from '@mui/material'
-import { gsap } from 'gsap'
-import ChatIcon from '@mui/icons-material/Chat'
-import CloseIcon from '@mui/icons-material/Close'
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
-import faqData from '../../data/faq.json'
-import Scrollbar from '../Custom/Scroll'
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { Box, Button, IconButton, Paper, Stack, Typography } from "@mui/material"
+import { gsap } from "gsap"
+import ChatIcon from "@mui/icons-material/Chat"
+import CloseIcon from "@mui/icons-material/Close"
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline"
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline"
+import faqData from "../../data/faq.json"
+import Scrollbar from "../Custom/Scroll"
 
 type FAQItem = {
   id: string
@@ -20,19 +20,20 @@ const faqGreeting = faqData.greeting as string
 type ConversationEntry = FAQItem
 
 function QuestionBubble({ label }: { label: string }) {
-
   return (
-    <Stack direction="row" spacing={1} alignItems="flex-start" sx={{ alignSelf: 'flex-start', maxWidth: '90%' }}>
+    <Stack direction="row" spacing={1} alignItems="flex-start" sx={{ alignSelf: "flex-start", maxWidth: "90%" }}>
       <Box
         sx={{
           width: 32,
           height: 32,
-          borderRadius: '50%',
-          background: 'rgba(248,246,227,0.15)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#ffe1d1',
+          borderRadius: "50%",
+          background: "rgba(243, 237, 226, 0.08)",
+          border: "1px solid var(--color-rule)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "var(--color-accent-2)",
+          flexShrink: 0,
         }}
       >
         <ChatBubbleOutlineIcon fontSize="small" />
@@ -41,13 +42,12 @@ function QuestionBubble({ label }: { label: string }) {
         sx={{
           px: 1.6,
           py: 1,
-          borderRadius: '12px',
-          background: 'linear-gradient(135deg, rgba(173,130,105,0.45) 0%, rgba(66,43,34,0.6) 100%)',
-          border: '1px solid rgba(255,255,255,0.14)',
-          boxShadow: '0 10px 20px rgba(0,0,0,0.25)',
+          borderRadius: "14px",
+          background: "rgba(126, 140, 224, 0.15)",
+          border: "1px solid rgba(126, 140, 224, 0.3)",
         }}
       >
-        <Typography sx={{ fontWeight: 600, color: '#ffe1d1', fontSize: '0.83rem' }}>{label}</Typography>
+        <Typography sx={{ fontWeight: 700, color: "var(--color-ink)", fontSize: "0.83rem" }}>{label}</Typography>
       </Box>
     </Stack>
   )
@@ -55,30 +55,30 @@ function QuestionBubble({ label }: { label: string }) {
 
 function AnswerBubble({ text }: { text: string }) {
   return (
-    <Stack direction="row" spacing={1} justifyContent="flex-end" sx={{ alignSelf: 'flex-end', maxWidth: '92%' }}>
+    <Stack direction="row" spacing={1} justifyContent="flex-end" sx={{ alignSelf: "flex-end", maxWidth: "92%" }}>
       <Box
         sx={{
           px: 1.6,
           py: 1,
-          borderRadius: '12px',
-          background: 'rgba(248,246,227,0.12)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          color: '#f8f6e3',
-          boxShadow: '0 10px 20px rgba(0,0,0,0.22)',
+          borderRadius: "14px",
+          background: "var(--color-paper-2)",
+          border: "1px solid var(--color-rule)",
+          color: "var(--color-ink-2)",
         }}
       >
-        <Typography sx={{ fontSize: '0.8rem', lineHeight: 1.6 }}>{text}</Typography>
+        <Typography sx={{ fontSize: "0.8rem", lineHeight: 1.6 }}>{text}</Typography>
       </Box>
       <Box
         sx={{
           width: 32,
           height: 32,
-          borderRadius: '50%',
-          background: 'rgba(173,130,105,0.35)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#ffe1d1',
+          borderRadius: "50%",
+          background: "var(--color-accent)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#121018",
+          flexShrink: 0,
         }}
       >
         <PersonOutlineIcon fontSize="small" />
@@ -102,7 +102,7 @@ function FAQChat() {
     }
 
     gsap.killTweensOf(iconRef.current)
-    gsap.fromTo(iconRef.current, { scale: 1 }, { scale: 0.85, duration: 0.14, ease: 'power1.inOut', yoyo: true, repeat: 1 })
+    gsap.fromTo(iconRef.current, { scale: 1 }, { scale: 0.85, duration: 0.14, ease: "power1.inOut", yoyo: true, repeat: 1 })
   }
 
   const handleToggle = () => {
@@ -125,8 +125,8 @@ function FAQChat() {
         autoAlpha: 0,
         y: 24,
         scale: 0.92,
-        duration: 0.28,
-        ease: 'power2.in',
+        duration: 0.24,
+        ease: "expo.in",
         onComplete: () => {
           setIsAnimating(false)
           setIsOpen(false)
@@ -138,14 +138,13 @@ function FAQChat() {
     }
   }
 
-
   const handleSelect = (item: FAQItem) => {
     setConversation((prev) => [...prev, item])
   }
 
   useEffect(() => {
     if (conversationRef.current) {
-      conversationRef.current.scrollTo({ top: conversationRef.current.scrollHeight, behavior: 'smooth' })
+      conversationRef.current.scrollTo({ top: conversationRef.current.scrollHeight, behavior: "smooth" })
     }
   }, [conversation])
 
@@ -160,6 +159,11 @@ function FAQChat() {
       return
     }
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsAnimating(false)
+      return
+    }
+
     gsap.killTweensOf(element)
     gsap.set(element, { autoAlpha: 0, y: 24, scale: 0.92 })
     const tween = gsap.to(element, {
@@ -167,7 +171,7 @@ function FAQChat() {
       y: 0,
       scale: 1,
       duration: 0.32,
-      ease: 'power3.out',
+      ease: "expo.out",
       onComplete: () => setIsAnimating(false)
     })
 
@@ -179,52 +183,54 @@ function FAQChat() {
   return (
     <Box
       sx={{
-        position: 'fixed',
+        position: "fixed",
         bottom: { xs: 16, sm: 24 },
         right: { xs: 12, sm: 24 },
         zIndex: 1300,
         width: 56,
         height: 56,
-        pointerEvents: 'none',
+        pointerEvents: "none",
       }}
     >
       {isOpen && (
         <Paper
           ref={chatContainerRef}
-          elevation={8}
+          elevation={0}
           sx={{
-            position: 'absolute',
+            position: "absolute",
             bottom: 72,
             right: 0,
             width: { xs: 320, sm: 380, md: 420 },
-            maxWidth: '92vw',
-            maxHeight: { xs: '72vh', sm: '80vh' },
-            borderRadius: '16px',
-            border: '1px solid rgba(255,255,255,0.18)',
-            background: 'rgba(32,24,20,0.94)',
-            backdropFilter: 'blur(8px)',
-            color: '#f8f6e3',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-            pointerEvents: 'auto',
+            maxWidth: "92vw",
+            maxHeight: { xs: "72vh", sm: "80vh" },
+            borderRadius: "24px",
+            border: "1px solid var(--color-rule)",
+            background: "rgba(22, 20, 29, 0.92)",
+            backdropFilter: "blur(20px)",
+            boxShadow: "var(--shadow-soft)",
+            color: "var(--color-ink)",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            pointerEvents: "auto",
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
               px: 2,
               py: 1.5,
-              background: 'linear-gradient(90deg, rgba(173,130,105,0.85) 0%, rgba(66,43,34,0.85) 100%)',
+              background: "rgba(32, 28, 43, 0.9)",
+              borderBottom: "1px solid var(--color-rule)",
             }}
           >
             <Box>
-              <Typography sx={{ fontWeight: 700, letterSpacing: 0.6 }}>Live Chat FAQ</Typography>
-              <Typography sx={{ fontSize: '0.8rem', opacity: 0.8 }}>Pilih pertanyaan untuk melihat jawabannya</Typography>
+              <Typography sx={{ fontWeight: 800, letterSpacing: "-0.01em", color: "var(--color-ink)" }}>Live Chat FAQ</Typography>
+              <Typography sx={{ fontSize: "0.78rem", color: "var(--color-ink-3)" }}>Pilih pertanyaan untuk melihat jawabannya</Typography>
             </Box>
-            <IconButton onClick={handleToggle} size="small" sx={{ color: '#f8f6e3' }}>
+            <IconButton onClick={handleToggle} size="small" sx={{ color: "var(--color-ink)" }}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </Box>
@@ -236,13 +242,13 @@ function FAQChat() {
               px: 2.4,
               py: 1.8,
               flexGrow: 1,
-              maxHeight: { xs: '46vh', sm: '56vh' },
-              overflowX: 'hidden',
+              maxHeight: { xs: "46vh", sm: "56vh" },
+              overflowX: "hidden",
             }}
             ref={conversationRef}
           >
             {conversation.length === 0 ? (
-              <Typography sx={{ fontSize: '0.8rem', opacity: 0.7 }}>
+              <Typography sx={{ fontSize: "0.8rem", color: "var(--color-ink-3)" }}>
                 Belum ada percakapan. Klik salah satu pertanyaan di bawah untuk mulai mengobrol.
               </Typography>
             ) : (
@@ -255,8 +261,8 @@ function FAQChat() {
             )}
           </Stack>
 
-          <Stack spacing={1.2} sx={{ px: 2, py: 1.6, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <Typography sx={{ fontSize: '0.85rem', lineHeight: 1.5 }}>{faqGreeting}</Typography>
+          <Stack spacing={1.2} sx={{ px: 2, py: 1.6, borderTop: "1px solid var(--color-rule)" }}>
+            <Typography sx={{ fontSize: "0.85rem", lineHeight: 1.5, color: "var(--color-ink-2)" }}>{faqGreeting}</Typography>
             <Stack spacing={1}>
               {faqItems.map((item) => (
                 <Button
@@ -264,15 +270,17 @@ function FAQChat() {
                   variant="outlined"
                   onClick={() => handleSelect(item)}
                   sx={{
-                    justifyContent: 'flex-start',
-                    borderColor: 'rgba(248,246,227,0.26)',
-                    color: '#f8f6e3',
-                    textTransform: 'none',
-                    fontSize: '0.85rem',
-                    borderRadius: '10px',
-                    '&:hover': {
-                      borderColor: '#ad8269',
-                      backgroundColor: 'rgba(173,130,105,0.18)',
+                    justifyContent: "flex-start",
+                    border: "1px solid var(--color-rule)",
+                    color: "var(--color-ink)",
+                    textTransform: "none",
+                    fontSize: "0.82rem",
+                    fontWeight: 600,
+                    borderRadius: "12px",
+                    transition: "all var(--dur-micro) var(--ease-out)",
+                    "&:hover": {
+                      borderColor: "var(--color-accent)",
+                      backgroundColor: "rgba(245, 166, 35, 0.12)",
                     },
                   }}
                 >
@@ -287,19 +295,23 @@ function FAQChat() {
       <IconButton
         ref={iconRef}
         onClick={handleToggle}
+        aria-label="Open FAQ chat"
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           right: 0,
           width: 56,
           height: 56,
-          borderRadius: '50%',
-          background: 'linear-gradient(90deg, #ad8269 0%, #6b5449 100%)',
-          color: '#f8f6e3',
-          boxShadow: '0 16px 26px rgba(0,0,0,0.35)',
-          pointerEvents: 'auto',
-          '&:hover': {
-            background: 'linear-gradient(90deg, #c99a7f 0%, #846455 100%)',
+          borderRadius: "50%",
+          background: "var(--color-accent)",
+          color: "#121018",
+          boxShadow: "0 8px 20px -4px rgba(245, 166, 35, 0.45)",
+          pointerEvents: "auto",
+          transition: "all var(--dur-short) var(--ease-out)",
+          "&:hover": {
+            background: "var(--color-accent)",
+            transform: "translateY(-3px)",
+            boxShadow: "0 12px 26px -4px rgba(245, 166, 35, 0.6)",
           },
         }}
       >
@@ -310,7 +322,3 @@ function FAQChat() {
 }
 
 export default FAQChat
-
-
-
-

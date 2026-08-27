@@ -1,27 +1,34 @@
-import { Button } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
 
 function GithubButton() {
   return (
-    <Button
-      variant="contained"
-      startIcon={<GitHubIcon />}
-      href="https://github.com/iqbalpradipta"
-      target="_blank"
-      sx={{
-          backgroundColor: '#1c2128',
-          '&:hover': {
-            backgroundColor: '#22272e',
-            color: 'white',
+    <Tooltip title="GitHub Profile" arrow placement="top">
+      <IconButton
+        component="a"
+        href="https://github.com/iqbalpradipta"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        sx={{
+          color: "rgba(243, 237, 226, 0.8)",
+          background: "rgba(255, 255, 255, 0.04)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          borderRadius: "12px",
+          width: 44,
+          height: 44,
+          transition: "all 0.2s ease",
+          "&:hover": {
+            background: "rgba(255, 255, 255, 0.12)",
+            color: "#f3ede2",
+            transform: "translateY(-2px)",
           },
-          width: '100%',
         }}
-      
-    >
-      GitHub
-    </Button>
+      >
+        <GitHubIcon fontSize="small" />
+      </IconButton>
+    </Tooltip>
   );
 }
 
-export default GithubButton
+export default GithubButton;

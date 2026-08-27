@@ -7,10 +7,16 @@
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  color: #f7ede3;
-  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  padding: 28px 36px;
+  border-radius: 24px;
+  border: 1px solid var(--color-rule);
+  background: rgba(22, 20, 29, 0.88);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-ink);
+  font-family: var(--font-label);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 .loading-header {
@@ -18,20 +24,20 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: clamp(0.85rem, 2vw, 1rem);
-  color: rgba(247, 237, 227, 0.88);
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  color: var(--color-ink-3);
   font-weight: 600;
 }
 
 .loading-header span:first-child {
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #ad8269;
+  letter-spacing: 0.16em;
+  color: var(--color-accent);
 }
 
 .loading-progress-value {
   font-variant-numeric: tabular-nums;
-  color: #d9b59a;
+  color: var(--color-ink-2);
   font-weight: 600;
 }
 
@@ -41,13 +47,10 @@
 
 .loading-bar-border {
   position: relative;
-  height: 28px;
-  border: 2px solid rgba(205, 159, 123, 0.82);
-  border-radius: 6px;
-  background: rgba(107, 84, 73, 0.42);
-  box-shadow:
-    0 0 14px rgba(173, 130, 105, 0.32),
-    0 0 28px rgba(107, 84, 73, 0.28);
+  height: 24px;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: rgba(18, 16, 24, 0.8);
   overflow: hidden;
 }
 
@@ -57,10 +60,10 @@
   left: 0;
   height: 100%;
   width: 0%;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #f5e1c8 0%, #d5a685 40%, #ad8269 75%, #6b5449 100%);
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.18);
-  transition: width 0.24s ease-out;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.5);
+  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 
@@ -73,12 +76,11 @@
   inset: 0;
   background: repeating-linear-gradient(
     120deg,
-    rgba(245, 225, 200, 0.32) 0px,
-    rgba(245, 225, 200, 0.32) 20px,
-    rgba(245, 225, 200, 0) 20px,
-    rgba(245, 225, 200, 0) 40px
+    rgba(18, 16, 24, 0.15) 0px,
+    rgba(18, 16, 24, 0.15) 20px,
+    transparent 20px,
+    transparent 40px
   );
-  mix-blend-mode: screen;
   animation: stripes-slide 1.4s linear infinite;
 }
 
@@ -94,6 +96,7 @@
 @media (max-width: 640px) {
   .loading-screen {
     gap: 12px;
+    padding: 22px 24px;
   }
 
   .loading-header {
@@ -101,6 +104,6 @@
   }
 
   .loading-bar-border {
-    height: 24px;
+    height: 20px;
   }
 }

@@ -1,32 +1,39 @@
 [
     {
+        "id": "balstorage",
+        "image": "/assets/BalStorage.png",
+        "title": "BalStorage",
+        "urlMock": "storage.iqbalpradipta.my.id",
+        "description": "Discord-backed cloud storage dashboard featuring real-time analytics, storage breakdown by file categories, and attachment object management.",
+        "stack": ["TypeScript", "React.js", "Node.js", "Discord API"],
+        "source": "https://github.com/iqbalpradipta/balstorage",
+        "website": "https://storage.iqbalpradipta.my.id"
+    },
+    {
+        "id": "circle-apps",
         "image": "/assets/CircleApps.png",
         "title": "Circle Apps",
-        "description": "Building Social media experiences with feature Login, Register, Posts, Replies, Follows, and Likes. Developed using Typescript, React.js, and PostgreSQL",
+        "urlMock": "circle-apps.dev",
+        "description": "A feature-rich social media platform with user authentication, post feeds, replies, follow workflows, and likes.",
+        "stack": ["TypeScript", "React.js", "PostgreSQL", "Node.js"],
         "source": "https://github.com/iqbalpradipta/Thread-Apps"
     },
     {
-        "image": "/assets/Guest The Place (1).png",
-        "title": "Trivia Apps",
-        "description": "A multiplayer game where users can connect with each other and play charades. this application is built with node.js, express.js, websocket.",
-        "source": "https://github.com/orgs/TEAM-4-GUEST-THE-PLACE/repositories"
-    },
-    {
+        "id": "noyo",
         "image": "/assets/Noyo.png",
-        "title": "NoYo",
-        "description": "Developed an online hotel booking system similar to Airbnb. Built with React JS, Node.js, Express.js, TypeScript, and MongoDB.",
+        "title": "NoYo Booking",
+        "urlMock": "noyo-stay.com",
+        "description": "Online hotel booking system featuring room search, reservation workflows, and property management.",
+        "stack": ["React.js", "TypeScript", "Node.js", "MongoDB"],
         "source": "https://github.com/iqbalpradipta/NoYo"
     },
     {
+        "id": "baltify",
         "image": "/assets/Baltify.png",
-        "title": "Baltify (Frontend & Bakcend not integrate)",
-        "description": "Devloped an online music player like spotify. Build with React JS, Node.js, Express.js, TypeScript and MongoDB",
+        "title": "Baltify Audio Player",
+        "urlMock": "baltify-player.app",
+        "description": "Web music player interface with playlist queues, audio playback controls, and track library features.",
+        "stack": ["React.js", "TypeScript", "Express.js", "MongoDB"],
         "source": "https://github.com/iqbalpradipta/Baltify"
-    },
-    {
-        "image": "/assets/BalPay.png",
-        "title": "BalPay (Not Integrate FE & BE)",
-        "description": "Building E-commerce with feature Login, Register, and Payment Gateway. Developed using Typescript, React.js, Express JS, Golang, and PostgreSQL",
-        "source": "https://github.com/iqbalpradipta/BalPay"
     }
 ]

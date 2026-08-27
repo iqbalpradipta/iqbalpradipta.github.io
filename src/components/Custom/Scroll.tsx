@@ -2,19 +2,22 @@ const Scrollbar = () => {
   return {
     scrollBox: {
       overflowY: "auto",
-      '&::-webkit-scrollbar': {
-        width: "9px",
+      scrollbarWidth: "thin",
+      scrollbarColor: "rgba(243, 237, 226, 0.25) transparent",
+      "&::-webkit-scrollbar": {
+        width: "8px",
       },
-      '&::-webkit-scrollbar-track': {
-        backgroundColor: "#fcb5a5",
-        borderRadius: "5px",
+      "&::-webkit-scrollbar-track": {
+        backgroundColor: "transparent",
       },
-      '&::-webkit-scrollbar-thumb': {
-        backgroundColor: "#794639",
-        borderRadius: "5px",
+      "&::-webkit-scrollbar-thumb": {
+        backgroundColor: "rgba(243, 237, 226, 0.22)",
+        borderRadius: "999px",
+        border: "2px solid transparent",
+        backgroundClip: "padding-box",
       },
-      '&::-webkit-scrollbar-thumb:hover': {
-        backgroundColor: "#fcb5a5",
+      "&::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: "var(--color-accent)",
       },
     },
   };

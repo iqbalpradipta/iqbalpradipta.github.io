@@ -1,7 +1,6 @@
-﻿import { Container, Grid } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import Navbar from "../components/Headers/Navbar";
 import { Outlet } from "react-router-dom";
-import Me from "../components/Me";
 import { useState, useEffect } from "react";
 import Loading from "../components/Loading/loading";
 import FAQChat from "../components/LiveChat/FAQChat";
@@ -11,19 +10,11 @@ function Layout() {
 
   useEffect(() => {
     let isActive = true;
-    let timerId = 0;
-
-    const timerPromise = new Promise<void>((resolve) => {
-      timerId = window.setTimeout(resolve, 4500);
-    });
-
-    const preloadPromise = import("../components/DetailMe");
-
-    Promise.all([timerPromise, preloadPromise]).then(() => {
+    const timerId = window.setTimeout(() => {
       if (isActive) {
         setLoading(false);
       }
-    });
+    }, 4500);
 
     return () => {
       isActive = false;
@@ -41,54 +32,39 @@ function Layout() {
         maxWidth={false}
         disableGutters
         sx={{
-          width: "100%",
-          maxWidth: { xs: "100%", lg: "1240px", xl: "1400px" },
+          width: { xs: "calc(100% - 24px)", md: "calc(100% - 80px)" },
+          maxWidth: { xs: "100%", lg: "1140px", xl: "1280px" },
           mx: "auto",
-          px: { xs: 1.4, sm: 2, md: 2.6 },
-          py: { xs: 1.1, md: 1.4 },
-          minHeight: { xs: "auto", md: "100vh" },
+          my: { xs: 1.5, md: 3 },
+          px: { xs: 2.2, sm: 3.5, md: 4.5 },
+          pt: { xs: 1.5, md: 2 },
+          pb: { xs: 2.2, md: 3.5 },
+          height: { xs: "auto", md: "calc(100vh - 48px)" },
+          maxHeight: { xs: "none", md: "calc(100vh - 48px)" },
           display: "flex",
           flexDirection: "column",
-          overflowX: "hidden",
-          overflowY: { xs: "visible", md: "auto" },
+          overflow: "hidden",
+          background: "rgba(14, 12, 20, 0.72)",
+          backdropFilter: "blur(32px) saturate(140%)",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+          borderRadius: { xs: "22px", md: "32px" },
+          boxShadow: "0 32px 64px -16px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
         }}
       >
         <Navbar />
-        <Grid
-          container
-          rowSpacing={{ xs: 2.2, md: 3 }}
-          columnSpacing={{ xs: 1.2, sm: 2.2, md: 3.2, xl: 3.8 }}
-          justifyContent="center"
+        <Box
           sx={{
             flexGrow: 1,
             minHeight: 0,
-            overflow: "visible",
-            alignItems: { xs: "stretch", md: "flex-start" },
+            height: { xs: "auto", md: "calc(100% - 64px)" },
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            mt: { xs: 1, md: 1.5 },
           }}
         >
-          <Grid
-            item
-            xs={12}
-            md={5}
-            lg={4}
-            display="flex"
-            justifyContent="center"
-            sx={{ alignItems: "stretch", minHeight: 0, height: "100%" }}
-          >
-            <Me />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={7}
-            lg={8}
-            display="flex"
-            justifyContent="center"
-            sx={{ alignItems: "stretch", minHeight: 0, height: "100%" }}
-          >
-            <Outlet />
-          </Grid>
-        </Grid>
+          <Outlet />
+        </Box>
       </Container>
       <FAQChat />
     </>
@@ -96,4 +72,3 @@ function Layout() {
 }
 
 export default Layout;
-

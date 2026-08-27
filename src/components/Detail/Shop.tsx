@@ -1,4 +1,4 @@
-﻿import { Box, Button, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Grid, Stack, Typography } from "@mui/material";
 import shopItems from "../../mocks/shop.json";
 
 type ShopItem = {
@@ -16,24 +16,23 @@ type ShopItemDisplay = ShopItem & { tier: "Program" | "Service" };
 const containerSx = {
   width: "100%",
   maxWidth: "100%",
-
-  border: "1px solid rgba(255,255,255,0.16)",
+  border: "1px solid var(--color-rule)",
   borderRadius: "18px",
-  background: "linear-gradient(180deg, rgba(50,35,28,0.78) 0%, rgba(36,23,18,0.9) 100%)",
+  background: "var(--color-paper)",
   px: { xs: 2, sm: 3, md: 3.2 },
   py: { xs: 2.2, sm: 2.8, md: 3.2 },
-  color: "rgba(255,255,255,0.88)",
+  color: "var(--color-ink-2)",
   minHeight: "100%",
-  boxShadow: "0 28px 42px rgba(0,0,0,0.38)",
+  boxShadow: "0 10px 22px -18px oklch(20% 0.012 250 / 0.35)",
 };
 
 const cardSx = {
   width: "100%",
   height: "100%",
   borderRadius: "20px",
-  background: "rgba(255,255,255,0.08)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  boxShadow: "0 18px 28px rgba(0,0,0,0.28)",
+  background: "var(--color-paper)",
+  border: "1px solid var(--color-rule)",
+  boxShadow: "0 10px 22px -18px oklch(20% 0.012 250 / 0.35)",
   display: "flex",
   flexDirection: "column",
   alignItems: "stretch",
@@ -41,11 +40,10 @@ const cardSx = {
   gap: { xs: 1.4, md: 1.6 },
   px: { xs: 1.8, md: 2.3 },
   py: { xs: 2.1, md: 2.6 },
-  transition: "transform 0.25s ease, box-shadow 0.25s ease",
+  transition: "transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out)",
   "&:hover": {
-    transform: "translateY(-6px)",
-    boxShadow: "0 26px 38px rgba(0,0,0,0.35)",
-    background: "rgba(255,255,255,0.12)",
+    transform: "translateY(-4px)",
+    boxShadow: "var(--shadow-lift)",
   },
 };
 
@@ -65,10 +63,9 @@ function Shop() {
         <Typography
           sx={{
             fontSize: { xs: "1.6rem", md: "1.9rem", xl: "2.1rem" },
-            fontWeight: 700,
-            letterSpacing: 1.2,
-            textTransform: "uppercase",
-            color: "#ffe1d1",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            color: "var(--color-ink)",
           }}
         >
           My Service
@@ -76,7 +73,7 @@ function Shop() {
         <Typography
           sx={{
             fontSize: { xs: "0.94rem", md: "1.05rem" },
-            color: "rgba(255,255,255,0.72)",
+            color: "var(--color-ink-3)",
             maxWidth: { xs: 420, md: 640 },
           }}
         >
@@ -100,38 +97,50 @@ function Shop() {
                   width: "100%",
                   aspectRatio: "1 / 1",
                   objectFit: "cover",
-                  borderRadius: "16px",
-                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "14px",
+                  border: "1px solid var(--color-rule)",
                 }}
               />
               <Stack spacing={0.6} alignItems="center">
-                <Typography sx={{ fontWeight: 700, color: "#ffe1d1", fontSize: { xs: "1rem", md: "1.05rem" } }}>
+                <Typography sx={{ fontWeight: 800, color: "var(--color-ink)", fontSize: { xs: "1rem", md: "1.05rem" }, letterSpacing: "-0.01em" }}>
                   {item.name}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "0.72rem",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 0.8,
+                    fontFamily: "var(--font-label)",
+                    fontSize: "0.68rem",
                     fontWeight: 600,
                     textTransform: "uppercase",
-                    letterSpacing: 1.4,
-                    color: item.tier === "Program" ? "#89c7ff" : "#f8bfa5",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-ink-3)",
+                    "&::before": {
+                      content: "\"\"",
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      background: item.tier === "Program" ? "var(--color-accent-2)" : "var(--color-lavender)",
+                      flexShrink: 0,
+                    },
                   }}
                 >
                   {item.tier}
                 </Typography>
               </Stack>
               <Stack spacing={1} sx={{ flexGrow: 1 }} alignItems="center">
-                <Typography sx={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}>
+                <Typography sx={{ fontSize: "0.88rem", color: "var(--color-ink-2)", lineHeight: 1.6 }}>
                   {item.description}
                 </Typography>
-                <Typography sx={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.6)", maxWidth: 320 }}>
+                <Typography sx={{ fontSize: "0.75rem", color: "var(--color-ink-3)", maxWidth: 320 }}>
                   {item.tier === "Program"
                     ? "Includes automation flows, product feed scrapers, and integration-ready modules."
                     : "Fokus pada kebutuhan Anda mulai dari perencanaan, pengembangan, hingga deployment yang terukur."}
                 </Typography>
               </Stack>
               <Stack spacing={1.2} alignItems="center" width="100%" sx={{ mt: "auto" }}>
-                <Typography sx={{ fontWeight: 700, color: "#fbd1c1", fontSize: "1rem" }}>{item.price}</Typography>
+                <Typography sx={{ fontWeight: 800, color: "var(--color-ink)", fontSize: "1rem" }}>{item.price}</Typography>
                 <Button
                   component="a"
                   href={item.url}
@@ -144,13 +153,15 @@ function Shop() {
                     px: 0,
                     py: 0.75,
                     borderRadius: "999px",
-                    background: "rgba(111,75,58,0.9)",
-                    color: "#fff",
-                    textTransform: "uppercase",
-                    fontWeight: 600,
-                    letterSpacing: 0.6,
+                    background: "var(--color-paper)",
+                    border: "1.5px solid var(--color-ink)",
+                    color: "var(--color-ink)",
+                    fontWeight: 700,
+                    transition: "transform var(--dur-short) var(--ease-out), background var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out)",
                     "&:hover": {
-                      background: "rgba(156,112,89,0.95)",
+                      background: "var(--color-accent)",
+                      transform: "translateY(-2px)",
+                      boxShadow: "var(--shadow-lift)",
                     },
                   }}
                 >
@@ -166,7 +177,3 @@ function Shop() {
 }
 
 export default Shop;
-
-
-
-

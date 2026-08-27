@@ -1,69 +1,43 @@
-﻿import { Box, CardMedia, Divider, Stack, Typography } from "@mui/material";
-import GithubButton from "./Button/githubButton";
-import LinkedInButton from "./Button/linkedInButton";
-import EmailButton from "./Button/emailButton";
-import WhatsAppButton from "./Button/whatsAppButton";
+import { Box, CardMedia, Divider, Stack, Typography } from "@mui/material";
+import DownloadCV from "./Button/downloadCV";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DownloadCV from "./Button/downloadCV";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const socialLinks = [
+  { label: "github ↗", href: "https://github.com/iqbalpradipta" },
+  { label: "linkedin ↗", href: "https://linkedin.com/in/iqbalpradipta" },
+  { label: "whatsapp ↗", href: "https://wa.me/6281385626786" },
+  { label: "email ↗", href: "mailto:iqbalpradipta2@gmail.com" },
+];
+
 export default function Me() {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (!boxRef.current) {
-      return undefined;
-    }
+    if (!boxRef.current) return undefined;
 
     const ctx = gsap.context(() => {
-      gsap.set(boxRef.current, {
-        autoAlpha: 0,
-        y: 46,
-        scale: 0.94,
-        filter: "blur(10px)",
-      });
-      gsap.set(".profile-avatar", { autoAlpha: 0, y: -28, scale: 0.8 });
-      gsap.set(".profile-info", { autoAlpha: 0, y: 14 });
-      gsap.set(".profile-divider", { autoAlpha: 0, width: 0 });
-      gsap.set(".profile-actions > *", { autoAlpha: 0, y: 18 });
+      const mm = gsap.matchMedia();
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        scrollTrigger: {
-          trigger: boxRef.current,
-          start: "top 82%",
-          once: true,
-        },
-      });
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.set(boxRef.current, { autoAlpha: 0, y: 24 });
+        gsap.set(".profile-avatar", { autoAlpha: 0, scale: 0.92 });
+        gsap.set(".profile-info", { autoAlpha: 0, y: 10 });
 
-      tl.to(boxRef.current, {
-        autoAlpha: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 0.8,
-      })
-        .to(
-          ".profile-avatar",
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 },
-          "-=0.45"
-        )
-        .to(".profile-info", { autoAlpha: 1, y: 0, duration: 0.45 }, "-=0.3")
-        .to(
-          ".profile-divider",
-          { width: "100%", autoAlpha: 1, duration: 0.4 },
-          "-=0.25"
-        )
-        .to(
-          ".profile-actions > *",
-          { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.1 },
-          "-=0.2"
-        );
+        const tl = gsap.timeline({
+          defaults: { ease: "expo.out" },
+          scrollTrigger: { trigger: boxRef.current, start: "top 85%", once: true },
+        });
+
+        tl.to(boxRef.current, { autoAlpha: 1, y: 0, duration: 0.7 })
+          .to(".profile-avatar", { autoAlpha: 1, scale: 1, duration: 0.5 }, "-=0.4")
+          .to(".profile-info", { autoAlpha: 1, y: 0, duration: 0.4 }, "-=0.3");
+      });
     }, boxRef);
 
     return () => ctx.revert();
@@ -74,94 +48,112 @@ export default function Me() {
       ref={boxRef}
       sx={{
         width: "100%",
-        height: { xs: "auto", md: "100%" },
-        minHeight: { xs: "auto", md: "100%" },
-        flexGrow: 1,
-        flexShrink: 0,
-        maxWidth: { xs: "100%", sm: "100%", md: 320, lg: 360 },
-        maxHeight: { xs: "none", md: "90vh" },
+        height: "100%",
+        minHeight: 0,
+        maxHeight: "100%",
         overflow: "hidden",
-        mx: "auto",
-        mt: { xs: 0.75, md: 1.6 },
-        mb: 0,
-        px: { xs: 1.6, sm: 2.4, md: 3.2 },
-        pt: { xs: 6, sm: 7.6, md: 9.2 },
-        pb: { xs: 3.2, sm: 3.8, md: 6.8 },
-        borderRadius: "18px",
-        background:
-          "linear-gradient(180deg, rgba(107,84,73,0.92) 0%, rgba(66,43,34,0.88) 100%)",
-        border: "1px solid rgba(255,255,255,0.14)",
-        boxShadow: "0 20px 32px rgba(0,0,0,0.32)",
-        backdropFilter: "blur(6px)",
+        px: { xs: 2.2, sm: 3, md: 3.5 },
+        py: { xs: 3, sm: 3.5, md: 4 },
+        borderRadius: "24px",
+        background: "linear-gradient(165deg, rgba(26, 22, 36, 0.75) 0%, rgba(16, 14, 22, 0.88) 100%)",
+        border: "1px solid rgba(255, 255, 255, 0.08)",
+        boxShadow: "0 16px 36px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: { xs: 1.8, sm: 2.4, md: 3 },
-        opacity: 0,
+        justifyContent: "space-between",
       }}
       className="profile-card"
     >
-      <CardMedia
-        component="img"
-        image="/assets/pp.jpg"
-        title="Photo Iqbal Gantenk"
-        sx={{
-          width: { xs: 108, sm: 130, md: 142 },
-          height: { xs: 108, sm: 130, md: 142 },
-          borderRadius: "50%",
-          border: "4px solid rgba(255,255,255,0.6)",
-          boxShadow: "0 18px 30px rgba(0,0,0,0.28)",
-          objectFit: "cover",
-          mt: { xs: -6, sm: -7, md: -8 },
-        }}
-        className="profile-avatar"
-      />
-      <Stack
-        spacing={{ xs: 0.5, sm: 0.7, md: 0.8 }}
-        alignItems="center"
-        sx={{ width: "100%", mt: { xs: 0.25, sm: 0.5, md: 0 } }}
-        className="profile-info"
-      >
-        <Typography variant="h6" sx={{ textAlign: "center", fontWeight: 600 }}>
-          Iqbal Pradipta
-        </Typography>
-        <Typography
-          sx={{ textAlign: "center", color: "rgba(255,255,255,0.72)" }}
-        >
-          Fullstack Developer
-        </Typography>
+      {/* Highlighted Profile Header */}
+      <Stack spacing={2} alignItems="center" sx={{ width: "100%" }}>
+        <Box sx={{ position: "relative" }}>
+          <CardMedia
+            component="img"
+            image="/assets/pp.jpg"
+            title="Iqbal Pradipta"
+            sx={{
+              width: { xs: 120, sm: 136, md: 144 },
+              height: { xs: 120, sm: 136, md: 144 },
+              borderRadius: "50%",
+              border: "3px solid rgba(255, 255, 255, 0.15)",
+              boxShadow: "0 16px 36px rgba(0, 0, 0, 0.65)",
+              objectFit: "cover",
+            }}
+            className="profile-avatar"
+          />
+        </Box>
+
+        <Stack spacing={0.4} alignItems="center" className="profile-info" sx={{ width: "100%" }}>
+          <Typography
+            variant="h5"
+            sx={{
+              textAlign: "center",
+              fontWeight: 800,
+              fontSize: { xs: "1.3rem", md: "1.45rem" },
+              letterSpacing: "-0.02em",
+              color: "#f3ede2",
+            }}
+          >
+            Iqbal Pradipta
+          </Typography>
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontFamily: "var(--font-label)",
+              fontSize: "0.72rem",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "#f5a623",
+            }}
+          >
+            Fullstack Developer
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "0.82rem",
+              color: "rgba(243, 237, 226, 0.55)",
+              textAlign: "center",
+              mt: 0.2,
+            }}
+          >
+            Bekasi, Indonesia
+          </Typography>
+        </Stack>
       </Stack>
-      <Divider
-        sx={{ width: "100%", borderColor: "rgba(255,255,255,0.18)" }}
-        className="profile-divider"
-      />
-      <Stack
-        spacing={{ xs: 0.65, sm: 0.9, md: 1 }}
-        sx={{
-          width: "100%",
-          mt: { xs: 0.25, sm: 0.4, md: 0.2 },
-          flexGrow: { xs: 0, sm: 0, md: 1 },
-          justifyContent: { xs: "flex-start", md: "center" },
-        }}
-        alignItems="stretch"
-        className="profile-actions"
-      >
-        <Typography
-          component="span"
-          sx={{
-            fontWeight: 700,
-            textAlign: "center",
-            letterSpacing: { xs: 0.3, sm: 0.45, md: 0.6 },
-            textTransform: "uppercase",
-            fontSize: { xs: "0.82rem", sm: "0.9rem", md: "0.95rem" },
-          }}
-        >
-          Let's Connect With Me!
-        </Typography>
-        <GithubButton />
-        <LinkedInButton />
-        <EmailButton />
-        <WhatsAppButton />
+
+      <Divider sx={{ width: "100%", borderColor: "rgba(255, 255, 255, 0.08)", my: 1.5 }} />
+
+      {/* Social Links & CV Action */}
+      <Stack spacing={2} sx={{ width: "100%" }} alignItems="center">
+        {/* Typographic Social Links */}
+        <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={1.8} sx={{ width: "100%" }}>
+          {socialLinks.map((s) => (
+            <Typography
+              key={s.label}
+              component="a"
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                fontFamily: "var(--font-label)",
+                fontSize: "0.76rem",
+                fontWeight: 600,
+                color: "rgba(243, 237, 226, 0.65)",
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+                "&:hover": {
+                  color: "#f5a623",
+                  transform: "translateY(-1px)",
+                },
+              }}
+            >
+              {s.label}
+            </Typography>
+          ))}
+        </Stack>
+
         <DownloadCV />
       </Stack>
     </Box>

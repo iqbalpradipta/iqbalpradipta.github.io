@@ -1,12 +1,8 @@
 import { Box, Typography } from "@mui/material";
 
-const PRIMARY_TEXT = "#fef5e7";
-const SECONDARY_TEXT = "#ffb694";
-const ICON_PRIMARY = "#fef5e7";
-const ICON_ACCENT = "#ffb694";
-const FONT_STACK = '"Poppins", "Noto Sans", sans-serif';
-const TEXT_SHADOW = "0 4px 10px rgba(8,0,0,0.35)";
-const ICON_GLOW = "drop-shadow(0 10px 16px rgba(8,0,0,0.3))";
+const INK = "#f3ede2";
+const ACCENT = "#f5a623";
+const WORDMARK = "var(--font-label)";
 
 export default function Logo() {
   return (
@@ -24,30 +20,29 @@ export default function Logo() {
         sx={{
           position: "relative",
           zIndex: 1,
-          width: { xs: 28, sm: 36 },
-          height: { xs: 22, sm: 28 },
-          filter: ICON_GLOW,
+          width: { xs: 28, sm: 34 },
+          height: { xs: 22, sm: 26 },
         }}
       >
         <svg viewBox="0 0 68 56" width="100%" height="100%">
           <polyline
             points="14,10 14,46"
             fill="none"
-            stroke={ICON_PRIMARY}
+            stroke={INK}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="14,10 28,10"
             fill="none"
-            stroke={ICON_PRIMARY}
+            stroke={INK}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="14,46 28,46"
             fill="none"
-            stroke={ICON_PRIMARY}
+            stroke={INK}
             strokeWidth={6}
             strokeLinecap="round"
           />
@@ -56,14 +51,14 @@ export default function Logo() {
             y1={10}
             x2={42}
             y2={46}
-            stroke={ICON_ACCENT}
+            stroke={ACCENT}
             strokeWidth={6}
             strokeLinecap="round"
           />
           <polyline
             points="48,18 60,28 48,38"
             fill="none"
-            stroke={ICON_PRIMARY}
+            stroke={INK}
             strokeWidth={6}
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -84,13 +79,12 @@ export default function Logo() {
         <Typography
           component="span"
           sx={{
-            fontFamily: FONT_STACK,
-            fontSize: { xs: "0.78rem", sm: "0.95rem" },
-            fontWeight: 800,
-            letterSpacing: { xs: 4.2, sm: 5.4 },
+            fontFamily: WORDMARK,
+            fontSize: { xs: "0.72rem", sm: "0.85rem" },
+            fontWeight: 700,
+            letterSpacing: { xs: 3.2, sm: 4.2 },
             textTransform: "uppercase",
-            color: PRIMARY_TEXT,
-            textShadow: TEXT_SHADOW,
+            color: INK,
           }}
         >
           Iqbal
@@ -98,13 +92,12 @@ export default function Logo() {
         <Typography
           component="span"
           sx={{
-            fontFamily: FONT_STACK,
-            fontSize: { xs: "0.78rem", sm: "0.95rem" },
-            fontWeight: 800,
-            letterSpacing: { xs: 5.4, sm: 6.6 },
+            fontFamily: WORDMARK,
+            fontSize: { xs: "0.72rem", sm: "0.85rem" },
+            fontWeight: 700,
+            letterSpacing: { xs: 3.9, sm: 4.9 },
             textTransform: "uppercase",
-            color: SECONDARY_TEXT,
-            textShadow: TEXT_SHADOW,
+            color: ACCENT,
           }}
         >
           Pradipta

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   Box,
   IconButton,
@@ -22,7 +22,7 @@ const quickLinks = [
         sx={{
           width: 18,
           height: 18,
-          borderRadius: "4px",
+          borderRadius: "6px",
           border: "2px solid currentColor",
           display: "flex",
           alignItems: "center",
@@ -81,15 +81,14 @@ export default function Modal() {
         onClick={handleClick}
         sx={{
           borderRadius: "14px",
-          backgroundColor: "rgba(255,255,255,0.14)",
-          border: "1px solid rgba(255,255,255,0.24)",
-          backdropFilter: "blur(10px)",
-          boxShadow: "0 12px 24px rgba(0,0,0,0.28)",
-          color: "#fdf8ef",
-          transition: "all 0.25s ease",
-          '&:hover': {
-            backgroundColor: "rgba(255,255,255,0.22)",
-            transform: "translateY(-1px)",
+          backgroundColor: "var(--color-paper)",
+          border: "1px solid var(--color-rule)",
+          boxShadow: "0 4px 10px -4px oklch(20% 0.012 250 / 0.18)",
+          color: "var(--color-ink)",
+          transition: "transform var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out)",
+          "&:hover": {
+            backgroundColor: "var(--color-paper-3)",
+            transform: "translateY(-2px)",
           },
         }}
       >
@@ -108,11 +107,10 @@ export default function Modal() {
             px: 1.2,
             py: 1.1,
             borderRadius: "18px",
-            background: "linear-gradient(135deg, rgba(26,16,12,0.96) 0%, rgba(54,31,24,0.94) 100%)",
-            border: "1px solid rgba(255,255,255,0.18)",
-            boxShadow: "0 24px 40px rgba(0,0,0,0.32)",
-            backdropFilter: "blur(16px)",
-            color: "rgba(255,255,255,0.92)",
+            background: "var(--color-paper)",
+            border: "1px solid var(--color-rule)",
+            boxShadow: "var(--shadow-soft)",
+            color: "var(--color-ink)",
           },
         }}
         MenuListProps={{
@@ -128,10 +126,12 @@ export default function Modal() {
           <Typography
             variant="subtitle2"
             sx={{
+              fontFamily: "var(--font-label)",
               fontWeight: 600,
-              letterSpacing: 1.2,
+              fontSize: "0.68rem",
+              letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.55)",
+              color: "var(--color-ink-3)",
             }}
           >
             Quick links
@@ -154,10 +154,9 @@ export default function Modal() {
               px: 1.2,
               py: 1,
               gap: 1.2,
-              transition: "all 0.2s ease",
-              '&:hover': {
-                backgroundColor: "rgba(255,255,255,0.08)",
-                transform: "translateX(4px)",
+              transition: "background-color var(--dur-micro) var(--ease-out)",
+              "&:hover": {
+                backgroundColor: "oklch(66% 0.18 235 / 0.08)",
               },
             }}
           >
@@ -170,8 +169,9 @@ export default function Modal() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "rgba(255,255,255,0.9)",
-                backgroundColor: "rgba(255,255,255,0.1)",
+                color: "var(--color-ink)",
+                backgroundColor: "var(--color-paper-2)",
+                border: "1px solid var(--color-rule)",
               }}
             >
               {item.icon}
@@ -179,15 +179,15 @@ export default function Modal() {
             <ListItemText
               primary={item.label}
               secondary={item.description}
-              primaryTypographyProps={{ fontWeight: 600 }}
+              primaryTypographyProps={{ fontWeight: 700, color: "var(--color-ink)" }}
               secondaryTypographyProps={{
                 sx: {
-                  color: "rgba(255,255,255,0.52)",
+                  color: "var(--color-ink-3)",
                   fontSize: "0.72rem",
                 },
               }}
             />
-            <LaunchIcon sx={{ fontSize: 16, opacity: 0.4 }} />
+            <LaunchIcon sx={{ fontSize: 16, color: "var(--color-ink-3)" }} />
           </MenuItem>
         ))}
       </Menu>
